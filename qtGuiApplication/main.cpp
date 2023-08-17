@@ -17,7 +17,13 @@ int main(int argc, char* argv[])
 
     if (db.isOpen())
     {
-        db.createMpsTable();
+        //db.createMpsTable();
+        //db.createFinancialInterestsTable();
+        //db.createPersonTable();
+        //db.createSpeechTable();
+        //db.createSpeechContentTable();
+        db.createDebateTable();
+
         std::vector<MP> mps = db.getAllMps();
         for (size_t i = 0; i < mps.size(); ++i) {
             qDebug() << "===" << mps[i].getName();

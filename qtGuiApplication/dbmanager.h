@@ -22,6 +22,15 @@ public:
 
     MP getMpFromName(const QString& name);
 
+    bool createFinancialInterestsTable();
+
+    bool createPersonTable();
+
+    bool createSpeechTable();
+
+    bool createSpeechContentTable();
+
+    bool createDebateTable();
 private:
     QSqlDatabase m_db;
 };

@@ -142,9 +142,21 @@ def convert_to_datetime(date_string):
 
 # Removes extra information from mps name so that it can be used as a foreign key
 def getJustMpName(name):
-    pattern = r'^(Rt\s)?Hon\s|\(.*\)$'
-    cleaned_string = re.sub(pattern, '', name)
-    return cleaned_string.strip()
+    # Remove 'Dr', 'Rt', or 'Hon' from the beginning of the name
+    cleaned_name = re.sub(r'^(Dr|Rt|Hon)\s+', '', name, flags=re.IGNORECASE)
+    cleaned_name = re.sub(r'^(Dr|Rt|Hon)\s+', '', cleaned_name, flags=re.IGNORECASE)
+    
+    # Remove content inside brackets and anything after the bracket
+    if "(" in cleaned_name:
+        cleaned_name = cleaned_name.split("(")[0]
+    
+    # Capitalize the first letter of the first and last names, lowercase the rest
+    name_parts = cleaned_name.split()
+    formatted_parts = [part.capitalize() if i == 0 or i == len(name_parts) - 1 else part.lower() for i, part in enumerate(name_parts)]
+    
+    formatted_name = ' '.join(formatted_parts)
+    
+    return formatted_name
 
 # creates list of debates from a single url
 def get_debates_from_url(url):
@@ -167,13 +179,13 @@ def get_debates_from_url(url):
                     c = para.get('class', [''])[0] #credit: chatgpt
                     if c == "BeginningOfDay":
                         preface.date = flatten(para)
-                    elif c == "BillDebate":
-                        bill = BillDebate()
-                        bill.speeches = []
-                        bill.title = flatten(para)
-                        bills.append(bill)
-                        current = bill
-                    elif c == "Debate":
+                    #elif c == "BillDebate":
+                    #    bill = BillDebate()
+                    #    bill.speeches = []
+                    #    bill.title = flatten(para)
+                    #    bills.append(bill)
+                    #    current = bill
+                    elif c == "Debate" or c == "BillDebate":
                         debate = Debate()
                         debate.speeches = []
                         debate.title = flatten(para)
@@ -210,7 +222,8 @@ def get_debates_from_url(url):
 
 # writes the data from a list of debates (appends it to file doesn't write over it)
 def write_debates_to_csv(debates):
-    with open("web-scrapers/transcripts-scraper/debates.csv", mode='a', newline='', encoding="utf-8" ) as file:
+    #with open("web-scrapers/transcripts-scraper/debates.csv", mode='a', newline='', encoding="utf-8" ) as file:
+    with open("debates.csv", mode='a', newline='', encoding="utf-8" ) as file:
         csv_writer = csv.writer(file)
 
         for debate in debates:
@@ -219,7 +232,8 @@ def write_debates_to_csv(debates):
             else:
                 print(debate.title + " " + debate.subTitle)
 
-    with open("web-scrapers/transcripts-scraper/speeches.csv", mode='a', newline='', encoding="utf-8") as file:
+    #with open("web-scrapers/transcripts-scraper/speeches.csv", mode='a', newline='', encoding="utf-8") as file:
+    with open("speeches.csv", mode='a', newline='', encoding="utf-8") as file:
         csv_writer = csv.writer(file)
 
         for debate in debates:
@@ -229,7 +243,8 @@ def write_debates_to_csv(debates):
                 else:
                     print(speech.by + " " + speech.time + " " + debate.title)
 
-    with open("web-scrapers/transcripts-scraper/speechContent.csv", mode='a', newline='', encoding="utf-8") as file:
+    #with open("web-scrapers/transcripts-scraper/speechContent.csv", mode='a', newline='', encoding="utf-8") as file:
+    with open("speechContent.csv", mode='a', newline='', encoding="utf-8") as file:
         csv_writer = csv.writer(file)
         i = 0
         for debate in debates:
@@ -239,37 +254,91 @@ def write_debates_to_csv(debates):
                     i += 1
 # creates new csv files and adds the headers
 def init_csv_files():
-    with open("web-scrapers/transcripts-scraper/debates.csv", mode='w', newline='', encoding="utf-8" ) as file:
+    #with open("web-scrapers/transcripts-scraper/debates.csv", mode='w', newline='', encoding="utf-8" ) as file:
+    with open("debates.csv", mode='w', newline='', encoding="utf-8" ) as file:
         csv_writer = csv.writer(file)
         csv_writer.writerow(['Title', 'Subtitle', 'DateTime'])
 
-    with open("web-scrapers/transcripts-scraper/speeches.csv", mode='w', newline='', encoding="utf-8") as file:
+    #with open("web-scrapers/transcripts-scraper/speeches.csv", mode='w', newline='', encoding="utf-8") as file:
+    with open("speeches.csv", mode='w', newline='', encoding="utf-8") as file:
         csv_writer = csv.writer(file)
         csv_writer.writerow(['Name', 'DateTime', 'Debate_Time'])
 
-    with open("web-scrapers/transcripts-scraper/speechContent.csv", mode='w', newline='', encoding="utf-8") as file:
+    #with open("web-scrapers/transcripts-scraper/speechContent.csv", mode='w', newline='', encoding="utf-8") as file:
+    with open("speechContent.csv", mode='w', newline='', encoding="utf-8") as file:
         csv_writer = csv.writer(file)
         csv_writer.writerow(['Speech_Content_ID', 'Type', 'Name', 'Text', 'Speech_Time'])
 
+def write_person_csv(persons):
+    with open('mp.csv', 'r') as csvfile:
+        csvreader = csv.reader(csvfile)
+        header = next(csvreader)  # Read the header row
+        contact_column_index = header.index('contact')
+        mps = [row[contact_column_index] for row in csvreader]
+
+    for c in range(len(mps)):
+        mp_split = mps[c].split(",")
+        mps[c] = mp_split[1].strip().replace('"', '') + " " + mp_split[0].strip().replace('"', '')
+
+    #with open("web-scrapers/transcripts-scraper/person.csv", mode='w', newline='', encoding="utf-8") as file:
+    with open("/person.csv", mode='w', newline='', encoding="utf-8") as file:
+        csv_writer = csv.writer(file)
+        csv_writer.writerow(['Name', 'Is_Mp'])
+
+        for person in persons:
+            is_mp 
+            csv_writer.writerow([person, ])
+                    
+    
+
 # goes through list of dates gets debates adds them to csv
 def main(dates):
+    file_path = 'persons.txt'
+
+    # Open the file in read mode
+    with open(file_path, 'r', encoding="utf-8") as file:
+        content = file.read()
+
+    # Convert the content to a list
+    persons = content.splitlines()
+
     for d in range(len(dates)):
         print(str(d) + ": " + dates[d])
         url = "https://www.parliament.nz/en/pb/hansard-debates/rhr/combined/HansD_" + dates[d]
         debates = get_debates_from_url(url)
+        for debate in debates:
+            for speech in debate.speeches:
+                if getJustMpName(speech.by) not in persons:
+                    print(speech.by)
+                    print("=======  " + getJustMpName(speech.by))
+                    persons.append(getJustMpName(speech.by))
+                for speechContent in speech.content:
+                    if getJustMpName(speechContent.name) not in persons:
+                        print(speechContent.name)
+                        print("=======  " + getJustMpName(speechContent.name))
+                        persons.append(getJustMpName(speechContent.name))
+        file_path = 'persons.txt'
+        # Open the file in write mode
+        with open(file_path, 'w', encoding="utf-8") as file:
+            for item in persons:
+                file.write(str(item) + '\n')
         write_debates_to_csv(debates)
+    return persons
 
 if __name__ == "__main__":
 
-    with open("web-scrapers/transcripts-scraper/validDates.json", "r") as file:
+    #print(getJustMpName("Hon Dr AYESHA VERRALL (Minister of Health)"))
+
+    #with open("web-scrapers/transcripts-scraper/validDates.json", "r") as file:
+    with open("validDates.json", "r") as file:
         valid_dates = json.load(file)
 
-    init_csv_files()
+    #init_csv_files()
 
     #valid_dates = get_new_urls("")
     #valid_dates = ["20211109_20211109", "20220505_20220505", "20220510_20220510", "20201125_20201125"]
 
-    debates = main(valid_dates)
+    debates = main(valid_dates[244:])
     
     '''
     if len(sys.argv) == 2:

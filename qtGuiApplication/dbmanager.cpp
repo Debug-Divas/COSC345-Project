@@ -126,3 +126,243 @@ MP DbManager::getMpFromName(const QString& name)
     }
 }
 
+bool DbManager::createFinancialInterestsTable()
+{
+    QSqlQuery query;
+
+    query.prepare("DROP Table finances");
+    query.exec();
+                            
+    query.prepare("CREATE TABLE finances( mp_name VARCHAR(50) PRIMARY KEY, company_directorships VARCHAR(800) NULL, other_companies VARCHAR(1600) NULL, employment VARCHAR(100) NULL, interest_trust VARCHAR(500) NULL, organizations VARCHAR(800) NULL, property VARCHAR(800) NULL, retirement VARCHAR(300) NULL, investment_schemes VARCHAR(500) NULL, debts_to_you VARCHAR(400) NULL, debts_owed_by_you VARCHAR(300) NULL, overseas_travel VARCHAR(1000) NULL, gifts VARCHAR(1000) NULL, payment_activities VARCHAR(500) NULL);");
+
+    if (!query.exec())
+    {
+        qDebug() << "Couldn't create the table 'finances': one might already exist.";
+        return false;
+    }
+
+    QFile file("../web-scrapers/financial-scraper/output.csv");
+    if (!file.open(QIODevice::ReadOnly)) {
+        qDebug() << file.errorString();
+        return false;
+    }
+
+    QTextStream in(&file);
+
+    // Read the first line to ignore the header
+    if (!in.atEnd()) {
+        in.readLine();
+    }
+
+    query.prepare("INSERT INTO finances (mp_name, company_directorships, other_companies, employment, interest_trust, organizations, property, retirement, investment_schemes, debts_to_you, debts_owed_by_you, overseas_travel, gifts, payment_activities) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+    while (!in.atEnd()) {
+        QString line = in.readLine();
+        QStringList fields = line.split(",");
+
+        query.addBindValue(fields[0]);
+        for (int i = 1; i < 14; i++) {
+            query.addBindValue(fields[i] == "\"\"" ? NULL : fields[i]);
+        }
+
+        if (!query.exec()) {
+            qDebug() << "Error inserting data into table: " << query.lastError();
+            return false;
+        }
+    }
+
+    file.close();
+    return true;
+}
+
+
+bool DbManager::createPersonTable()
+{
+    QSqlQuery query;
+
+    query.prepare("DROP Table person");
+    query.exec();
+
+    query.prepare("CREATE TABLE person( name VARCHAR(50) PRIMARY KEY, is_mp INT);");
+
+    if (!query.exec())
+    {
+        qDebug() << "Couldn't create the table 'person': one might already exist.";
+        return false;
+    }
+
+    QFile file("../web-scrapers/transcripts-scraper/persons.csv");
+    if (!file.open(QIODevice::ReadOnly)) {
+        qDebug() << file.errorString();
+        return false;
+    }
+
+    QTextStream in(&file);
+
+    // Read the first line to ignore the header
+    if (!in.atEnd()) {
+        in.readLine();
+    }
+
+    query.prepare("INSERT INTO person (name, is_mp) VALUES (?, ?)");
+
+    while (!in.atEnd()) {
+        QString line = in.readLine();
+        QStringList fields = line.split(",");
+
+        query.addBindValue(fields[0]);
+        query.addBindValue(fields[1]);
+
+        if (!query.exec()) {
+            qDebug() << "Error inserting data into table: " << query.lastError();
+            return false;
+        }
+    }
+
+    file.close();
+    return true;
+}
+
+bool DbManager::createSpeechTable()
+{
+    QSqlQuery query;
+
+    query.prepare("DROP Table speech");
+    query.exec();
+
+    query.prepare("CREATE TABLE speech(name VARCHAR(100), date_time DATETIME PRIMARY KEY, debate_time DATETIME);");
+
+    if (!query.exec())
+    {
+        qDebug() << "Couldn't create the table 'speech': one might already exist.";
+        return false;
+    }
+
+    QFile file("../web-scrapers/transcripts-scraper/speeches.csv");
+    if (!file.open(QIODevice::ReadOnly)) {
+        qDebug() << file.errorString();
+        return false;
+    }
+
+    QTextStream in(&file);
+
+    // Read the first line to ignore the header
+    if (!in.atEnd()) {
+        in.readLine();
+    }
+
+    query.prepare("INSERT INTO speech (name, date_time, debate_time) VALUES (?, ?, ?)");
+
+    while (!in.atEnd()) {
+        QString line = in.readLine();
+        QStringList fields = line.split(",");
+
+        query.addBindValue(fields[0]);
+        query.addBindValue(fields[1]);
+        query.addBindValue(fields[2]);
+
+        if (!query.exec()) {
+            qDebug() << "Error inserting data into table: " << query.lastError();
+            return false;
+        }
+    }
+
+    file.close();
+    return true;
+}
+
+bool DbManager::createSpeechContentTable()
+{
+    QSqlQuery query;
+
+    query.prepare("DROP Table speechContent");
+    query.exec();
+
+    query.prepare("CREATE TABLE speechContent(speechID Int PRIMARY KEY, type VARCHAR(10), name VARCHAR(50), text VARCHAR(1000), speech_time DATETIME);");
+
+    if (!query.exec())
+    {
+        qDebug() << "Couldn't create the table 'speechContent': one might already exist.";
+        return false;
+    }
+
+    QFile file("../web-scrapers/transcripts-scraper/speechContent.csv");
+    if (!file.open(QIODevice::ReadOnly)) {
+        qDebug() << file.errorString();
+        return false;
+    }
+
+    QTextStream in(&file);
+
+    // Read the first line to ignore the header
+    if (!in.atEnd()) {
+        in.readLine();
+    }
+
+    query.prepare("INSERT INTO speechContent (speechID, type, name, text, speech_time) VALUES (?, ?, ?, ?, ?)");
+
+    while (!in.atEnd()) {
+        QString line = in.readLine();
+        QStringList fields = line.split(",");
+
+        for (int i = 0; i < 5; i++) {
+            query.addBindValue(fields[i]);
+        }
+
+        if (!query.exec()) {
+            qDebug() << "Error inserting data into table: " << query.lastError();
+            return false;
+        }
+    }
+
+    file.close();
+    return true;
+}
+bool DbManager::createDebateTable()
+{
+    QSqlQuery query;
+
+    query.prepare("DROP Table debate");
+    query.exec();
+
+    query.prepare("CREATE TABLE debate( title VARCHAR(100), subtitle VARCHAR(200), datetime DATETIME PRIMARY KEY);");
+
+    if (!query.exec())
+    {
+        qDebug() << "Couldn't create the table 'debate': one might already exist.";
+        return false;
+    }
+
+    QFile file("../web-scrapers/transcripts-scraper/debates.csv");
+    if (!file.open(QIODevice::ReadOnly)) {
+        qDebug() << file.errorString();
+        return false;
+    }
+
+    QTextStream in(&file);
+
+    // Read the first line to ignore the header
+    if (!in.atEnd()) {
+        in.readLine();
+    }
+
+    query.prepare("INSERT INTO debate (title, subtitle, datetime) VALUES (?, ?, ?)");
+
+    while (!in.atEnd()) {
+        QString line = in.readLine();
+        QStringList fields = line.split(",");
+
+        query.addBindValue(fields[0]);
+        query.addBindValue(fields[1]);
+        query.addBindValue(fields[2]);
+
+        if (!query.exec()) {
+            qDebug() << "Error inserting data into table: " << query.lastError();
+            return false;
+        }
+    }
+
+    file.close();
+    return true;
+}
+
