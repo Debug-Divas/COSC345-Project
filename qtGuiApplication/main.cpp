@@ -17,13 +17,23 @@ int main(int argc, char* argv[])
 
     if (db.isOpen())
     {
-        //db.createMpsTable();
-        //db.createFinancialInterestsTable();
-        //db.createPersonTable();
-        //db.createSpeechTable();
-        //db.createSpeechContentTable();
-        db.createDebateTable();
+        
+        std::vector<MP> mps = db.getAllMps();
+        for (size_t i = 0; i < mps.size(); ++i) {
+            qDebug() << "===" << mps[i].getName();
+            qDebug() << "===" << mps[i].getElectorate();
+            qDebug() << "===" << mps[i].getFinances().getProperty();
+        }
 
+        /*
+        std::vector<Finances> finances = db.getAllFinances();
+        for (size_t i = 0; i < finances.size(); ++i) {
+            qDebug() << "===" << finances[i].getMpName();
+            qDebug() << "===" << finances[i].getInterestTrust();
+        }*/
+
+        //db.createMpsTable();
+        /*
         std::vector<MP> mps = db.getAllMps();
         for (size_t i = 0; i < mps.size(); ++i) {
             qDebug() << "===" << mps[i].getName();
@@ -32,7 +42,7 @@ int main(int argc, char* argv[])
 
         MP jamie = db.getMpFromName("Jamie Strange");
         qDebug() << "===" << jamie.getName();
-
+*/
         /*
         db.createTable();   // Creates a table if it doens't exist. Otherwise, it will use existing table.
         db.addPerson("A");
