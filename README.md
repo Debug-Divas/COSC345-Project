@@ -1,5 +1,7 @@
 # COSC345-Project
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4ff3c60794e24705b79377d1d6356d3e)](https://app.codacy.com/gh/Debug-Divas/COSC345-Project?utm_source=github.com&utm_medium=referral&utm_content=Debug-Divas/COSC345-Project&utm_campaign=Badge_Grade)
+
 ## Description
 - The COSC345 project is a semester long project that is built using "two or more publicly available data sets (on different topics) that can be combined to add meaning to something, and build an app that uses that combined data for the betterment of the user or society".
 
