@@ -11,15 +11,16 @@ jobs:
           fetch-depth: 2
         id: checkout_code
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v2
         with:
           node-version: '16'
       - name: Setup MSBuild and add to PATH
         uses: microsoft/setup-msbuild@v1.0.2
         id: setup_msbuild
-      - name: Run MSBuild
-        id: run_msbuild
-        run: msbuild /p:Configuration=Debug /p:Platform=x86 UnitTests/tst_getmpfromname.cpp
+      - name: Compile and Run Tests
+        run: |
+          g++ -o tests.exe main.cpp UnitTests/tst_getmpfromname.cpp
+          ./tests.exe
       - name: Setup VSTest and add to PATH
         uses: darenm/Setup-VSTest@v1
         id: setup_vstest
@@ -31,13 +32,9 @@ jobs:
       - name: Generate Report
         id: generate_test_report
         shell: cmd
-        run: OpenCppCoverage.exe -- "vstest.console.exe" UnitTests/tst_getmpfromname.cpp
+        run: OpenCppCoverage.exe -- "vstest.console.exe" UnitTests/tst_getmpfromname.dll
       - name: Set Environment Variables for Codecov
         run: echo "CODECOV_TOKEN=${{ secrets.CODECOV_TOKEN1 }}" >> $GITHUB_ENV
-
-      - name: Compile and Run Tests
-        run: g++ -o tests.exe main.cpp UnitTests/tst_getmpfromname.cpp && ./tests.exe
-
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
         with:
