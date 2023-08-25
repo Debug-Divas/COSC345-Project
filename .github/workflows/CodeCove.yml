@@ -31,12 +31,12 @@ jobs:
       - name: Generate Report
         id: generate_test_report
         shell: cmd
-        run: OpenCppCoverage.exe --sources HelloCov --export_type cobertura:HelloCov.xml -- "vstest.console.exe" Debug\HelloTest.dll
+        run: OpenCppCoverage.exe --sources UnitTestCove--export_type cobertura:HelloCov.xml -- "vstest.console.exe" Debug\HelloTest.dll
 
       - name: Set Environment Variables for Codecov
-        run: echo "CODECOV_TOKEN=${{ secrets.CODECOV_TOKEN }}" >> $GITHUB_ENV
+        run: echo "CODECOV_TOKEN=${{ secrets.CODECOV_TOKEN1 }}" >> $GITHUB_ENV
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+          token: ${{ secrets.CODECOV_TOKEN1 }}
