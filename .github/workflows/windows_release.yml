@@ -116,7 +116,7 @@ jobs:
   
       - name: Run UnitTests
         working-directory: ${{ github.workspace }}/build-UnitTests/debug
-        run: ./"UnitTests.exe"
+        run: UnitTests.exe
   
       - name: Generate Report
         id: generate_test_report
