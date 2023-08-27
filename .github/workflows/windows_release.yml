@@ -109,20 +109,23 @@ jobs:
   run-and-generate-report:
     runs-on: windows-2019
     steps:
-      - name: Set up Git environment
-        run: git fetch --all --tags -f
-
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+  
       - name: Run UnitTests
         working-directory: ${{ github.workspace }}/build-UnitTests/debug
         run: ./"UnitTests.exe"
-
+  
       - name: Generate Report
         id: generate_test_report
         shell: cmd
         run: |
           dir
           dir x64
-          OpenCppCoverage.exe --export_type tests_report.xml -- ${{ github.workspace }}/build-UnitTests/debug/UnitTests.exe
+          OpenCppCoverage.exe --export_type cobertura:345_2023.xml -- ${{ github.workspace }}/build-UnitTests/debug/UnitTests.exe
+
 
   upload-report:
     runs-on: ubuntu-latest
