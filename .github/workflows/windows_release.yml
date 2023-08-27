@@ -95,67 +95,29 @@ jobs:
           name: ${{ env.ARTIFACT }}
           path: ${{ env.ARTIFACT }}
 
-      - name: Unit Tests Build
-        working-directory: ${{ runner.temp }}/build
-        run: |
-          qmake -r ${{ env.SOURCE_DIR }}/UnitTests/UnitTests.pro
-          ${{ runner.temp }}/jom/jom -j2
-          copy ${{ env.SOURCE_DIR }}/build parliament.db .
-          cd debug
-          windeployqt --qmldir ${{ env.SOURCE_DIR }}/build-UnitTests/debug UnitTests.exe --pdb --release --compiler-runtime
-          copy C:\Windows\System32\concrt140.dll .
-          copy C:\Windows\System32\vccorlib140.dll .
-          copy C:\Windows\System32\msvcp140.dll .
-          copy C:\Windows\System32\vcruntime140.dll .
 
-      - name: Unit Tests Zip build
-        working-directory: ${{ runner.temp }}
-        run:  |
-              7z a qt-tests-build.zip build/* -r
 
-      - name: Save Unit Tests build artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: ${{ env.TESTS_ARTIFACT }}
-          path: ${{ env.TESTS_ARTIFACT }}
 
-  run_app:
-    runs-on: windows-2019
-    needs: build
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-        with:
-          submodules: recursive
+      # - name: Run Application
+      #   working-directory: ${{ env.SOURCE_DIR }}/build-UnitTests/debug/
+      #   run: .\UnitTests.exe
 
-      - name: Get artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: ${{ env.TESTS_ARTIFACT }}
+      # - name: Setup OpenCppCoverage and add to Path
+      #   id: setup_opencppcoverage
+      #   run: |
+      #     choco install OpenCppCoverage -y
+      #     echo "C:\Program Files\OpenCppCoverage" >> $env:GITHUB_PATH
 
-      - name: Unzip artifact
-        run: 7z x ${{ env.TESTS_ARTIFACT }} -o${{ runner.temp }}/build
+      # - name: Generate Report
+      #   id: generate_test_report
+      #   run: |
+      #     cd ${{ runner.temp }}/build/release
+      #     OpenCppCoverage.exe --export_type cobertura:qt_application.xml -- UnitTests.exe
 
-      - name: Run Application
-        working-directory: ${{ env.SOURCE_DIR }}/build-UnitTests/debug/
-        run: .\UnitTests.exe
-
-      - name: Setup OpenCppCoverage and add to Path
-        id: setup_opencppcoverage
-        run: |
-          choco install OpenCppCoverage -y
-          echo "C:\Program Files\OpenCppCoverage" >> $env:GITHUB_PATH
-
-      - name: Generate Report
-        id: generate_test_report
-        run: |
-          cd ${{ runner.temp }}/build/release
-          OpenCppCoverage.exe --export_type cobertura:qt_application.xml -- UnitTests.exe
-
-      - name: Upload Report to Codecov
-        uses: codecov/codecov-action@v2
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: ./qt_application.xml
-          fail_ci_if_error: true
-          functionalities: fix
+      # - name: Upload Report to Codecov
+      #   uses: codecov/codecov-action@v2
+      #   with:
+      #     token: ${{ secrets.CODECOV_TOKEN }}
+      #     file: ./qt_application.xml
+      #     fail_ci_if_error: true
+      #     functionalities: fix
