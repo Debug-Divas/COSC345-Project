@@ -1,0 +1,12 @@
+﻿  Generate moc_predefs.h
+  dbmanager.cpp
+  finances.cpp
+  gmock-all.cc
+  gtest-all.cc
+  main.cpp
+  mp.cpp
+  tst_getmpfromname.cpp
+..\qtGuiApplication\dbmanager.cpp(98,9): warning C4189: 'idName': local variable is initialized but not referenced
+..\qtGuiApplication\dbmanager.cpp(144,9): warning C4189: 'idName': local variable is initialized but not referenced
+..\qtGuiApplication\dbmanager.cpp(216,9): warning C4189: 'mp_name': local variable is initialized but not referenced
+  UnitTests.vcxproj -> C:\Users\acton\OneDrive\Documents\111_cosc345_project\anotherone\UnitTests\debug\UnitTests.exe
