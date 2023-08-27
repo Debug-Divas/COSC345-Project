@@ -108,10 +108,10 @@ jobs:
           copy C:\Windows\System32\msvcp140.dll .
           copy C:\Windows\System32\vcruntime140.dll .
 
-      - name:  Unit Tests Zip build
+      - name: Unit Tests Zip build
         working-directory: ${{ runner.temp }}
         run:  |
-              7z a qt-tests-build.zip ${{ runner.temp }}\build\* -r
+              7z a qt-tests-build.zip build/* -r
 
       - name: Save Unit Tests build artifact
         uses: actions/upload-artifact@v2
