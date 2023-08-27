@@ -1,3 +1,5 @@
+QMAKE_POST_LINK += $$quote(cp $$PWD/parliament.db $$OUT_PWD)
+
 QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
