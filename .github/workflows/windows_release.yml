@@ -109,7 +109,9 @@ jobs:
           copy C:\Windows\System32\vcruntime140.dll .
 
       - name: Unit Tests Zip build
-        run: 7z a ${{ env.TESTS_ARTIFACT }} ${{ runner.temp }}/build/* -r
+        working-directory: ${{ runner.temp }}
+        run:  |
+              7z a qt-tests-build.zip build/* -r
 
       - name: Save Unit Tests build artifact
         uses: actions/upload-artifact@v2
