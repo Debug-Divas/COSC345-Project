@@ -19,7 +19,7 @@ jobs:
         uses: jurplel/install-qt-action@v3
       - name: Compile Google Test
         run: |
-          qmake -r CONFIG+=test CONFIG+=console CONFIG+=c++11 COSC345-Project/UnitTest/UnitTest.pro
+          qmake -r CONFIG+=test CONFIG+=console CONFIG+=c++11 ./UnitTests/UnitTests.pro
           make
       - name: Compile and Run Tests
         run: |
