@@ -15,12 +15,6 @@ jobs:
       - name: Setup MSBuild and add to PATH
         uses: microsoft/setup-msbuild@v1.1
         id: setup_msbuild
-      - name: Install Qt
-        uses: jurplel/install-qt-action@v3
-      - name: Compile Google Test
-        run: |
-          qmake -r CONFIG+=test CONFIG+=console CONFIG+=c++11 ./UnitTests/UnitTests.pro
-          make
       - name: Compile and Run Tests
         run: |
           g++ -o tests.exe main.cpp tst_getmpfromname.cpp -I$$GOOGLETEST_DIR/googletest/include -L. -lgtest
