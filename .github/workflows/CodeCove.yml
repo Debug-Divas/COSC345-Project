@@ -7,8 +7,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 2
         id: checkout_code
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -17,7 +15,7 @@ jobs:
         id: setup_msbuild
       - name: Compile and Run Tests
         run: |
-          g++ -o tests.exe main.cpp tst_getmpfromname.cpp -I$$GOOGLETEST_DIR/googletest/include -L. -lgtest
+          g++ -o tests.exe ./UnitTests/main.cpp ./UnitTests/tst_getmpfromname.cpp -I$$GOOGLETEST_DIR/googletest/include -L. -lgtest
           ./tests.exe
       - name: Setup VSTest and add to PATH
         uses: darenm/Setup-VSTest@v1
