@@ -24,6 +24,9 @@ signals:
 
 private slots:
     void on_okButton_accepted();
+    void on_TranscriptsButton_clicked();
+    void on_FinancesButton_clicked();
+    void on_VotesButton_clicked();
 };
 
 #endif // EXPANDEDCARD_H

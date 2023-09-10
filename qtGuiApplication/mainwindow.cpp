@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     expandedCard = nullptr;
+    on_peopleButton_clicked();
 }
 
 MainWindow::~MainWindow()
@@ -187,5 +188,11 @@ void MainWindow::on_filterButton_clicked()
     {
         qDebug() << "Couldn't open mps";
     }
+}
+
+
+void MainWindow::on_electionStatsButton_clicked()
+{
+    qDebug() << "Election Stats Button Clicked";
 }
 

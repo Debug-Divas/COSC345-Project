@@ -34,6 +34,7 @@ private slots:
     void clearCardsLayout();
     void on_filterButton_clicked();
     void showMpsOnScreen(std::vector<MP> mps);
+    void on_electionStatsButton_clicked();
 };
 
 #endif // MAINWINDOW_H
