@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>842</width>
-    <height>228</height>
+    <width>1060</width>
+    <height>238</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QHBoxLayout" name="horizontalLayout_2">
    <item>
     <widget class="QFrame" name="frame">
      <property name="frameShape">
@@ -24,42 +24,90 @@
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QLabel" name="label_4">
+       <widget class="QPushButton" name="actButton">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
         <property name="text">
          <string/>
         </property>
-        <property name="pixmap">
-         <pixmap>../images/mpppp.jpg</pixmap>
+        <property name="icon">
+         <iconset>
+          <normaloff>../images/parties/act.png</normaloff>../images/parties/act.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>180</width>
+          <height>190</height>
+         </size>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_3">
+       <widget class="QPushButton" name="labourButton">
         <property name="text">
          <string/>
         </property>
-        <property name="pixmap">
-         <pixmap>../images/green1.jpg</pixmap>
+        <property name="icon">
+         <iconset>
+          <normaloff>../images/parties/labour.png</normaloff>../images/parties/labour.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>180</width>
+          <height>190</height>
+         </size>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label">
+       <widget class="QPushButton" name="greenButton">
         <property name="text">
          <string/>
         </property>
-        <property name="pixmap">
-         <pixmap>../images/mylabour.jpg</pixmap>
+        <property name="icon">
+         <iconset>
+          <normaloff>../images/parties/green.png</normaloff>../images/parties/green.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>180</width>
+          <height>190</height>
+         </size>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_2">
+       <widget class="QPushButton" name="nationalButton">
         <property name="text">
          <string/>
         </property>
-        <property name="pixmap">
-         <pixmap>../images/mynational.jpg</pixmap>
+        <property name="icon">
+         <iconset>
+          <normaloff>../images/parties/national.png</normaloff>../images/parties/national.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>180</width>
+          <height>190</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="maoriButton">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../images/parties/maori.png</normaloff>../images/parties/maori.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>180</width>
+          <height>190</height>
+         </size>
         </property>
        </widget>
       </item>
