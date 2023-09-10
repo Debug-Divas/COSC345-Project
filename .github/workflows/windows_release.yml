@@ -65,36 +65,59 @@ jobs:
         with:
           arch: x64
 
-      - name: (8) Build
-        working-directory: ${{ runner.temp }}\build
-        run:  |
-              qmake -r ${{ env.SOURCE_DIR }}\qtGuiApplication\cardTest.pro
-              ${{ runner.temp }}\jom\jom -j2
-              copy ${{ env.SOURCE_DIR }}\build parliament.db .
-              mkdir images
-              copy ${{ env.SOURCE_DIR }}\images\* images
-              cd images 
-              mkdir parties
-              mkdir portraits
-              copy ${{ env.SOURCE_DIR }}\images\parties\* parties
-              copy ${{ env.SOURCE_DIR }}\images\portraits\* portraits
-              cd ..
-              
-              cd release
-              windeployqt --qmldir ${{ env.SOURCE_DIR }}\build\release sqlite_qt.exe --pdb --release --compiler-runtime
-              copy C:\Windows\System32\concrt140.dll . 
-              copy C:\Windows\System32\vccorlib140.dll .
-              copy C:\Windows\System32\msvcp140.dll .
-              copy C:\Windows\System32\vcruntime140.dll .
-                     
-      - name: (9) Zip build
-        working-directory: ${{ runner.temp }}
-        run:  |
-              7z a qt-mpGui-build.zip -r ${{ runner.temp }}/build/*
-              
-      - name: (10) Save build artifact
-        uses: actions/upload-artifact@master
+      - name: Build
+        working-directory: ${{ runner.temp }}/build
+        run: |
+          qmake -r ${{ env.SOURCE_DIR }}/qtGuiApplication/cardTest.pro
+          ${{ runner.temp }}/jom/jom -j2
+          mkdir images
+          copy ${{ env.SOURCE_DIR }}/images/* images
+          cd images
+          mkdir parties
+          mkdir portraits
+          copy ${{ env.SOURCE_DIR }}/images/parties/* parties
+          copy ${{ env.SOURCE_DIR }}/images/portraits/* portraits
+          cd ..
+          copy ${{ env.SOURCE_DIR }}/build parliament.db .
+          cd release
+          windeployqt --qmldir ${{ env.SOURCE_DIR }}/build/release sqlite_qt.exe --pdb --release --compiler-runtime
+          copy C:\Windows\System32\concrt140.dll .
+          copy C:\Windows\System32\vccorlib140.dll .
+          copy C:\Windows\System32\msvcp140.dll .
+          copy C:\Windows\System32\vcruntime140.dll .
+
+      - name: Zip build
+        run: 7z a ${{ env.ARTIFACT }} ${{ runner.temp }}/build/* -r
+
+      - name: Save build artifact
+        uses: actions/upload-artifact@v2
         with:
           name: ${{ env.ARTIFACT }}
-          path: |
-            ${{ runner.temp }}\${{ env.ARTIFACT }}
+          path: ${{ env.ARTIFACT }}
+
+
+
+
+      # - name: Run Application
+      #   working-directory: ${{ env.SOURCE_DIR }}/build-UnitTests/debug/
+      #   run: .\UnitTests.exe
+
+      # - name: Setup OpenCppCoverage and add to Path
+      #   id: setup_opencppcoverage
+      #   run: |
+      #     choco install OpenCppCoverage -y
+      #     echo "C:\Program Files\OpenCppCoverage" >> $env:GITHUB_PATH
+
+      # - name: Generate Report
+      #   id: generate_test_report
+      #   run: |
+      #     cd ${{ runner.temp }}/build/release
+      #     OpenCppCoverage.exe --export_type cobertura:qt_application.xml -- UnitTests.exe
+
+      # - name: Upload Report to Codecov
+      #   uses: codecov/codecov-action@v2
+      #   with:
+      #     token: ${{ secrets.CODECOV_TOKEN }}
+      #     file: ./qt_application.xml
+      #     fail_ci_if_error: true
+      #     functionalities: fix
