@@ -59,7 +59,7 @@ jobs:
              mkdir ${{ runner.temp }}\qtGuiApplication
              xcopy /E /I ${{env.SOURCE_DIR }} ${{ runner.temp}}\qtGuiApplication
              mkdir ${{ runner.temp }}\UnitTests
-             xcopy /E /I ${{ github.workspace }}\UnitTests ${{ runner.temp }}\UnitTests
+             xcopy /E /I ${{ env.SOURCE_DIR }}\UnitTests ${{ runner.temp }}\UnitTests
 
       - name: (7) Set up Visual Studio shell
         uses: egor-tensin/vs-shell@v2
