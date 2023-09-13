@@ -1,4 +1,4 @@
-include(gtest_dependency.pri)
+
 
 TEMPLATE = app
 TARGET = UnitTests
