@@ -1,4 +1,5 @@
 # COSC345-Project
+![Uploading image.png…]()
 
 ## Description
 - The COSC345 project is a semester long project that is built using "two or more publicly available data sets (on different topics) that can be combined to add meaning to something, and build an app that uses that combined data for the betterment of the user or society".
