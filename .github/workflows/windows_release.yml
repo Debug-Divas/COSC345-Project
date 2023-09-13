@@ -110,9 +110,8 @@ jobs:
         working-directory: ${{ runner.temp }}
         shell: cmd
         run: |
-          dir
+          cd build-UnitTests
           cd debug
-          dir
           windeployqt UnitTests.exe
 
       - name: Generate Report
