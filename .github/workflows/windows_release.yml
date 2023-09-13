@@ -105,12 +105,11 @@ jobs:
           echo "C:\Program Files\OpenCppCoverage" >> $env:GITHUB_PATH
 
       - name: Compile tests and generate code coverage
-        working-directory: ${{ runner.temp }}\UnitTests
+        working-directory: ${{ runner.temp }}\build-UnitTests
         shell: cmd
         run: |
-          qmake UnitTests.pro
           ${{ runner.temp }}\jom\jom -j2
-          cd release
+          cd debug
           windeployqt UnitTests.exe
 
       - name: Generate Report
