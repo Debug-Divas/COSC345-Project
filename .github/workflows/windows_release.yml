@@ -113,13 +113,11 @@ jobs:
           cd build-UnitTests
           cd debug
           windeployqt UnitTests.exe 
-          "C:\Program Files\OpenCppCoverage\OpenCppCoverage.exe" --sources ${{ runner.temp }}\qtGuiApplication --export_type cobertura:qt_application.xml -- ${{ runner.temp }}\build-UnitTests\debug\UnitTests.exe
 
       - name: Generate Report
         id: generate_test_report
         run: |
-             "C:\Program Files\OpenCppCoverage\OpenCppCoverage.exe" --sources ${{ runner.temp }}\qtGuiApplication --export_type cobertura:qt_application.xml -- ${{ runner.temp }}\build-UnitTests\debug\UnitTests.exe
-
+             "C:\Program Files\OpenCppCoverage\OpenCppCoverage.exe" --sources ${{ runner.temp }}\qtGuiApplication --export_type cobertura:qt_application.xml
       - name: Upload Report to Codecov
         uses: codecov/codecov-action@v2
         with:
