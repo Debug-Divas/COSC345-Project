@@ -67,10 +67,10 @@ jobs:
           arch: x64
 
       - name: Build
-        working-directory: ${{ runner.temp }}/build
+        working-directory: ${{ runner.temp }}
         run: |
           qmake -r ${{ env.SOURCE_DIR }}/qtGuiApplication/cardTest.pro
-          ${{ runner.temp }}/jom/jom -f Makefile.Debug
+          ${{ runner.temp }}/jom/jom -f ${{ env.SOURCE_DIR }}/build Makefile.Debug
           mkdir images
           copy ${{ env.SOURCE_DIR }}/images/* images
           cd images
