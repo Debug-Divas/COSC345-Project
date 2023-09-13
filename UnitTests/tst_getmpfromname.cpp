@@ -15,9 +15,7 @@ TEST(dbmanager, dbmanagerTest)
 }
 
 
-TEST(testGetName, dbmanagerTest)
-{
-    qDebug() << "slayyyy";
+TEST(testGetName, dbmanagerTest){
 
     static const QString path = "parliament.db";
 
@@ -27,7 +25,26 @@ TEST(testGetName, dbmanagerTest)
 
     MP mp = db.getMpFromName(name);
 
-    qDebug() << mp.getName();
-
     EXPECT_EQ(name, mp.getName());
 }
+
+
+TEST(testGetNameSpecialChar, dbmanagerTest){
+
+    static const QString path = "parliament.db";
+
+    DbManager db(path);
+
+    QString name1 = "Tāmati Coffey";
+    QString name2 = "Chlöe Swarbrick";
+    QString name3 = "Ricardo Menéndez March";
+
+    MP mp1 = db.getMpFromName(name1);
+    MP mp2 = db.getMpFromName(name2);
+    MP mp3 = db.getMpFromName(name3);
+
+    EXPECT_EQ(name1, mp1.getName());
+    EXPECT_EQ(name2, mp2.getName());
+    EXPECT_EQ(name3, mp3.getName());
+}
+

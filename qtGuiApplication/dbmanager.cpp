@@ -93,8 +93,8 @@ std::vector<MP> DbManager::getAllMps()
 {
     std::vector<MP> allMps;
     qDebug() << "Persons in db:";
-    //QSqlQuery query("SELECT * FROM mps");
-    QSqlQuery query("SELECT mps.*, finances.* FROM mps JOIN Finances ON mps.name = Finances.mp_name;");
+    QSqlQuery query("SELECT * FROM mps");
+    //QSqlQuery query("SELECT mps.*, finances.* FROM mps LEFT JOIN Finances ON mps.name = Finances.mp_name;");
     int idName = query.record().indexOf("name");
     while (query.next())
     {
@@ -128,7 +128,7 @@ std::vector<MP> DbManager::getAllMpsFromParty(const QString& party)
     qDebug() << "Persons in db:";
     //QSqlQuery query("SELECT * FROM mps");
     QSqlQuery query;
-    query.prepare("SELECT mps.*, finances.* FROM mps JOIN Finances ON mps.name = Finances.mp_name WHERE mps.party = ?;");
+    query.prepare("SELECT mps.*, finances.* FROM mps LEFT JOIN Finances ON mps.name = Finances.mp_name WHERE mps.party = ?;");
     query.bindValue(0, party);
 
     /**/
@@ -173,7 +173,7 @@ MP DbManager::getMpFromName(const QString& name)
 {
     QSqlQuery query;
     //query.prepare("SELECT * FROM mps WHERE name = ?");
-    query.prepare("SELECT mps.*, finances.* FROM mps JOIN Finances ON mps.name = Finances.mp_name WHERE mps.name = ?;");
+    query.prepare("SELECT mps.*, finances.* FROM mps LEFT JOIN Finances ON mps.name = Finances.mp_name WHERE mps.name = ?;");
     query.bindValue(0, name);
 
     if (query.exec() && query.next())
@@ -236,3 +236,55 @@ std::vector<Finances> DbManager::getAllFinances()
     }
     return allFinances;
 }
+
+
+bool DbManager::createFinancialInterestsTable()
+{
+    QSqlQuery query;
+
+    query.prepare("DROP Table finances");
+    query.exec();
+
+    query.prepare("CREATE TABLE finances( mp_name VARCHAR(50) PRIMARY KEY, company_directorships VARCHAR(800) NULL, other_companies VARCHAR(1600) NULL, employment VARCHAR(100) NULL, interest_trust VARCHAR(500) NULL, organizations VARCHAR(800) NULL, property VARCHAR(800) NULL, retirement VARCHAR(300) NULL, investment_schemes VARCHAR(500) NULL, debts_to_you VARCHAR(400) NULL, debts_owed_by_you VARCHAR(300) NULL, overseas_travel VARCHAR(1000) NULL, gifts VARCHAR(1000) NULL, payment_activities VARCHAR(500) NULL);");
+    //query.prepare("CREATE TABLE finances( mp_name VARCHAR(50) PRIMARY KEY);");
+
+    if (!query.exec())
+    {
+        qDebug() << "Couldn't create the table 'finances': one might already exist.";
+        return false;
+    }
+
+    QFile file("../web-scrapers/financial-scraper/output.csv");
+    if (!file.open(QIODevice::ReadOnly)) {
+        qDebug() << file.errorString();
+        return false;
+    }
+
+    QTextStream in(&file);
+
+    // Read the first line to ignore the header
+    if (!in.atEnd()) {
+        in.readLine();
+    }
+
+    query.prepare("INSERT INTO finances (mp_name, company_directorships, other_companies, employment, interest_trust, organizations, property, retirement, investment_schemes, debts_to_you, debts_owed_by_you, overseas_travel, gifts, payment_activities) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+    while (!in.atEnd()) {
+        QString line = in.readLine();
+        QStringList fields = line.split(",");
+
+        query.addBindValue(fields[0]);
+        for (int i = 1; i < 14; i++) {
+            query.addBindValue(fields[i] == "\"\"" ? NULL : fields[i]);
+        }
+
+        if (!query.exec()) {
+            qDebug() << "Error inserting data into table: " << query.lastError();
+            return false;
+        }
+    }
+
+    file.close();
+    return true;
+}
+

@@ -27,6 +27,8 @@ public:
     
     std::vector<Finances> getAllFinances();
 
+    bool createFinancialInterestsTable();
+
 private:
     QSqlDatabase m_db;
 };
