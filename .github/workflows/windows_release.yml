@@ -108,9 +108,10 @@ jobs:
         working-directory: ${{ runner.temp }}\UnitTests
         shell: cmd
         run: |
-          qmake UnitTests.pro
-          ${{ runner.temp }}\jom\jom -j2
+          cd ..
+          cd build-UnitTests
           cd debug
+          ${{ runner.temp }}\jom\jom -j2
           windeployqt UnitTests.exe
 
       - name: Generate Report
