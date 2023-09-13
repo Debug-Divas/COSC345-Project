@@ -105,9 +105,10 @@ jobs:
           echo "C:\Program Files\OpenCppCoverage" >> $env:GITHUB_PATH
 
       - name: Compile tests and generate code coverage
-        working-directory: ${{ runner.temp }}\build-UnitTests
+        working-directory: ${{ runner.temp }}
         shell: cmd
         run: |
+          dir
           cd debug
           windeployqt UnitTests.exe
 
