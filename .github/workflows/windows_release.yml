@@ -108,7 +108,6 @@ jobs:
         working-directory: ${{ runner.temp }}\build-UnitTests
         shell: cmd
         run: |
-          ${{ runner.temp }}\jom\jom -j2
           cd debug
           windeployqt UnitTests.exe
 
