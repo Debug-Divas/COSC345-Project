@@ -43,3 +43,22 @@ void ExpandedCard::on_okButton_accepted()
     emit okButtonClicked();
 }
 
+
+void ExpandedCard::on_TranscriptsButton_clicked()
+{
+    qDebug() << "Transcripts Button clicked";
+}
+
+
+void ExpandedCard::on_FinancesButton_clicked()
+{
+    qDebug() << "Finances Button clicked";
+}
+
+
+void ExpandedCard::on_VotesButton_clicked()
+{
+    qDebug() << "Votes Button clicked";
+
+}
+

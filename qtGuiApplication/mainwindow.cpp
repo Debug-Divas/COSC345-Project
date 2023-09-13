@@ -3,6 +3,7 @@
 #include "card.h"
 #include "dialog.h"
 #include "expandedcard.h"
+#include "parties.h"
 #include <QDebug>
 #include <QBoxLayout>
 #include <dbmanager.h>
@@ -16,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     expandedCard = nullptr;
+    on_peopleButton_clicked();
 }
 
 MainWindow::~MainWindow()
@@ -62,11 +64,13 @@ void MainWindow::on_peopleButton_clicked()
 {
     DbManager db(path);
     std::vector<MP> mps;
-
+    removeParties();
+    ui->filterOptions->show();
+    ui->scrollArea->show();
     if (db.isOpen())
     {
         mps = db.getAllMps();
-        if (!mps.empty()) 
+        if (!mps.empty())
         {
             showMpsOnScreen(mps);
         }
@@ -74,10 +78,10 @@ void MainWindow::on_peopleButton_clicked()
             qDebug() << "No mps found";
         }
     }
-    else 
+    else
     {
         qDebug() << "Couldn't open mps";
-    }    
+    }
 }
 
 void MainWindow::showMpsOnScreen(std::vector<MP> mps) {
@@ -105,13 +109,7 @@ void MainWindow::showMpsOnScreen(std::vector<MP> mps) {
 }
 
 
-void MainWindow::on_partiesButton_clicked()
-{
-    clearCardsLayout();
 
-    Dialog *dialog = new Dialog;
-    ui->CardsLayout->addWidget(dialog);
-}
 
 void MainWindow::clearCardsLayout()
 {
@@ -142,7 +140,7 @@ void MainWindow::on_filterButton_clicked()
     QString searchQuery = ui->searchQuery->text();
     QString partyQuery = ui->partyQuery->currentText();
     qDebug() << searchQuery << " " << partyQuery;
-    
+
     DbManager db(path);
     std::vector<MP> mps;
 
@@ -154,7 +152,7 @@ void MainWindow::on_filterButton_clicked()
         else {
             mps = db.getAllMpsFromParty(partyQuery);
         }
-        
+
         if (!mps.empty())
         {
             if (searchQuery.isEmpty()) {
@@ -177,7 +175,7 @@ void MainWindow::on_filterButton_clicked()
 
                 showMpsOnScreen(filteredMps);
             }
-            
+
         }
         else {
             qDebug() << "No mps found";
@@ -187,5 +185,60 @@ void MainWindow::on_filterButton_clicked()
     {
         qDebug() << "Couldn't open mps";
     }
+}
+void MainWindow::on_partiesButton_clicked()
+{
+    clearCardsLayout();
+    ui->filterOptions->hide();
+    ui->scrollArea->hide();
+    Dialog *dialog = new Dialog;
+
+    // Create a QVBoxLayout for frame_5 if it doesn't have one
+    if (!ui->frame_5->layout()) {
+        QVBoxLayout* newLayout = new QVBoxLayout(ui->frame_5);
+        ui->frame_5->setLayout(newLayout);
+    }
+
+    QVBoxLayout* frameLayout = qobject_cast<QVBoxLayout*>(ui->frame_5->layout());
+    if (frameLayout) {
+        // Remove existing widgets from frameLayout
+        QLayoutItem* item;
+        while ((item = frameLayout->takeAt(0)) != nullptr) {
+            QWidget* widget = item->widget();
+            if (widget) {
+                widget->deleteLater();
+            }
+            delete item;
+        }
+
+        // Add the Dialog to frameLayout
+        frameLayout->addWidget(dialog);
+    }
+}
+
+void MainWindow::removeParties()
+{
+    QVBoxLayout* frameLayout = qobject_cast<QVBoxLayout*>(ui->frame_5->layout());
+    if (frameLayout) {
+        // Remove existing widgets from frameLayout
+        QLayoutItem* item;
+        while ((item = frameLayout->takeAt(0)) != nullptr) {
+            QWidget* widget = item->widget();
+            if (widget) {
+                widget->deleteLater();
+            }
+            delete item;
+        }
+    }
+}
+
+
+
+
+void MainWindow::on_electionStatsButton_clicked()
+{
+//    ui->filterOptions->hide(); // Assuming the name of the filter bar widget is "filterOptions"
+
+    qDebug() << "Election Stats Button Clicked";
 }
 

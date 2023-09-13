@@ -27,7 +27,8 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     mp.cpp \
-    finances.cpp
+    finances.cpp \
+    parties.cpp
 
 HEADERS += \
     card.h \
@@ -36,13 +37,15 @@ HEADERS += \
     expandedcard.h \
     mainwindow.h \
     mp.h \
-    finances.h
+    finances.h \
+    parties.h
 
 FORMS += \
     card.ui \
     dialog.ui \
     expandedcard.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    parties.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -16,7 +16,16 @@ public:
     ~Dialog();
 
 private slots:
-//    void on_buttonBox_accepted();
+
+    void on_labourButton_clicked();
+
+    void on_actButton_clicked();
+
+    void on_greenButton_clicked();
+
+    void on_nationalButton_clicked();
+
+    void on_maoriButton_clicked();
 
 private:
     Ui::Dialog *ui;
