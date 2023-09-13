@@ -110,8 +110,8 @@ jobs:
         run: |
           cd ..
           cd build-UnitTests
-          cd debug
           ${{ runner.temp }}\jom\jom -j2
+          cd debug
           windeployqt UnitTests.exe
 
       - name: Generate Report
