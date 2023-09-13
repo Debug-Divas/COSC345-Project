@@ -108,8 +108,7 @@ jobs:
         working-directory: ${{ runner.temp }}\UnitTests
         shell: cmd
         run: |
-          cd ..
-          cd build-UnitTests
+          qmake UnitTests.pro
           ${{ runner.temp }}\jom\jom -j2
           cd debug
           windeployqt UnitTests.exe
