@@ -59,14 +59,14 @@ jobs:
              mkdir ${{ runner.temp }}\qtGuiApplication
              xcopy /E /I ${{env.SOURCE_DIR }} ${{ runner.temp}}\qtGuiApplication
              mkdir ${{ runner.temp }}\UnitTests
-             xcopy /E /I ${{ github.workspace }}\UnitTests ${{ runner.temp }}\UnitTests
+             xcopy /E /I ${{ env.SOURCE_DIR }}\UnitTests ${{ runner.temp }}\UnitTests
 
       - name: (7) Set up Visual Studio shell
         uses: egor-tensin/vs-shell@v2
         with:
           arch: x64
 
-      - name: Build
+      - name: (8) Build
         working-directory: ${{ runner.temp }}
         run: |
           qmake -r ${{ env.SOURCE_DIR }}/qtGuiApplication/cardTest.pro
@@ -80,15 +80,17 @@ jobs:
           copy ${{ env.SOURCE_DIR }}/images/portraits/* portraits
           cd ..
           copy ${{ env.SOURCE_DIR }}/build parliament.db .
-          cd release
-          windeployqt --qmldir ${{ env.SOURCE_DIR }}/build/release sqlite_qt.exe --pdb --release --compiler-runtime
+          cd debug
+          windeployqt --qmldir ${{ env.SOURCE_DIR }}/build/debug sqlite_qt.exe --pdb --debug --compiler-runtime
           copy C:\Windows\System32\concrt140.dll .
           copy C:\Windows\System32\vccorlib140.dll .
           copy C:\Windows\System32\msvcp140.dll .
           copy C:\Windows\System32\vcruntime140.dll .
 
-      - name: Zip build
-        run: 7z a ${{ env.ARTIFACT }} ${{ runner.temp }}/build/* -r
+      - name: (9) Zip build
+        working-directory: ${{ runner.temp }}
+        run:  |
+              7z a qt-mpGui-build.zip ${{ runner.temp }}\qtGuiApplication\* -r
 
       - name: Save build artifact
         uses: actions/upload-artifact@v2
@@ -107,8 +109,11 @@ jobs:
         shell: cmd
         run: |
           qmake UnitTests.pro
+          cd ..
+          cd qtGuiApplication
           ${{ runner.temp }}\jom\jom -j2
-          cd release
+          cd ..
+          cd build-UnitTests/debug
           windeployqt UnitTests.exe
 
       - name: Generate Report

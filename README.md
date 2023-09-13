@@ -1,4 +1,6 @@
 # COSC345-Project
+![](https://github.com/Debug-Divas/COSC345-Project/assets/133945255/0ecb8e30-c168-44ce-aae8-2d179e21d62f)
+
 
 ## Description
 - The COSC345 project is a semester long project that is built using "two or more publicly available data sets (on different topics) that can be combined to add meaning to something, and build an app that uses that combined data for the betterment of the user or society".
