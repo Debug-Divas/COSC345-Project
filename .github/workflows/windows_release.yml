@@ -109,8 +109,11 @@ jobs:
         shell: cmd
         run: |
           qmake UnitTests.pro
+          cd ..
+          cd qtGuiApplication
           ${{ runner.temp }}\jom\jom -j2
-          cd debug
+          cd ..
+          cd build-UnitTests/debug
           windeployqt UnitTests.exe
 
       - name: Generate Report
