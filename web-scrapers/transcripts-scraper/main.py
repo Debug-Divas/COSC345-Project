@@ -45,7 +45,7 @@ def flatten(tag):
     content = ""
     for line in tag:
         if line.string is None:
-            content = flatten(l)
+            content = flatten(line)
         else:
             content = content + line.string
     return content
@@ -161,55 +161,55 @@ def get_debates_from_url(url):
     preface.title = flatten(soup.title)
 
     for body in soup.find_all('body'):
-            n = body.find_all('body')
-            for b2 in n:
-                p = b2.find_all('p')
-                current = None
-                currentSpeech = None
-                for para in p:
-                    #c = para['class'][0]
-                    c = para.get('class', [''])[0] #credit: chatgpt
-                    if c == "BeginningOfDay":
-                        preface.date = flatten(para)
-                    elif c == "BillDebate":
-                        bill = BillDebate()
-                        bill.speeches = []
-                        bill.title = flatten(para)
-                        bills.append(bill)
-                        current = bill
-                    elif c == "Debate":
-                        debate = Debate()
-                        debate.speeches = []
-                        debate.title = flatten(para)
-                        debates.append(debate)
-                        current = debate
+        n = body.find_all('body')
+        for b2 in n:
+            p = b2.find_all('p')
+            current = None
+            currentSpeech = None
+            for para in p:
+                #c = para['class'][0]
+                c = para.get('class', [''])[0] #credit: chatgpt
+                if c == "BeginningOfDay":
+                    preface.date = flatten(para)
+                elif c == "BillDebate":
+                    bill = BillDebate()
+                    bill.speeches = []
+                    bill.title = flatten(para)
+                    bills.append(bill)
+                    current = bill
+                elif c == "Debate":
+                    debate = Debate()
+                    debate.speeches = []
+                    debate.title = flatten(para)
+                    debates.append(debate)
+                    current = debate
 
-                    elif c == "SubDebate":
-                        if current != None:
-                            current.subTitle = flatten(para)
-                    elif c == "Speech":
-                        if current != None:
-                            currentSpeech = parseSpeech(para)
-                            current.speeches.append(currentSpeech)
-                    elif c == "a":
-                        if currentSpeech != None:
-                            s = parseA(para)
-                            if s.name == "":
-                                s.name = currentSpeech.by
-                            currentSpeech.content.append(s)
-                    elif c == "Interjection":
-                        if currentSpeech != None:
-                            s = parseInterjection(para)
-                            currentSpeech.content.append(s)
+                elif c == "SubDebate":
+                    if current is not None:
+                        current.subTitle = flatten(para)
+                elif c == "Speech":
+                    if current is not None:
+                        currentSpeech = parseSpeech(para)
+                        current.speeches.append(currentSpeech)
+                elif c == "a":
+                    if currentSpeech != None:
+                        s = parseA(para)
+                        if s.name == "":
+                            s.name = currentSpeech.by
+                        currentSpeech.content.append(s)
+                elif c == "Interjection":
+                    if currentSpeech is not None:
+                        s = parseInterjection(para)
+                        currentSpeech.content.append(s)
 
-                    elif c == "ContinueSpeech":
-                        if currentSpeech != None:
-                            s = parseContinueSpeech(para)
-                            currentSpeech.content.append(s)
-                    elif c == "Intervention":
-                        if currentSpeech != None:
-                            s = parseIntervention(para)
-                            currentSpeech.content.append(s)
+                elif c == "ContinueSpeech":
+                    if currentSpeech != None:
+                        s = parseContinueSpeech(para)
+                        currentSpeech.content.append(s)
+                elif c == "Intervention":
+                    if currentSpeech is not None:
+                        s = parseIntervention(para)
+                        currentSpeech.content.append(s)
 
 
 
