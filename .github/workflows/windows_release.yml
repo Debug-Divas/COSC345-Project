@@ -110,19 +110,14 @@ jobs:
         working-directory: ${{ runner.temp }}
         shell: cmd
         run: |
-          cd build-UnitTests
-          cd debug
-          echo "run DIR"
-          dir
-          echo "run UnitTests.exe"
-          UnitTests
-          echo "UnitTests.exe completed"
-
+          cd UnitTests
+          make
+          main.exe
           
       - name: Generate Report
         id: generate_test_report
         run: |
-             "C:\Program Files\OpenCppCoverage\OpenCppCoverage.exe" --sources ${{ runner.temp }}\qtGuiApplication --export_type cobertura:qt_application.xml
+             "C:\Program Files\OpenCppCoverage\OpenCppCoverage.exe" --sources ${{ runner.temp }}\qtGuiApplication --export_type cobertura:qt_application.xml -- main.exe
       - name: Upload Report to Codecov
         uses: codecov/codecov-action@v2
         with:
