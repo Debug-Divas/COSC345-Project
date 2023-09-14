@@ -112,8 +112,13 @@ jobs:
         run: |
           cd build-UnitTests
           cd debug
-          windeployqt UnitTests.exe 
+          echo "run DIR"
+          dir
+          echo "run UnitTests.exe"
+          UnitTests.exe 
+          echo "UnitTests.exe completed"
 
+          
       - name: Generate Report
         id: generate_test_report
         run: |
