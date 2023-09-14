@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class MP{
+    
     public String name;
     public String electorate;
     public String party;
