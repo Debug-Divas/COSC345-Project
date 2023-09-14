@@ -1,10 +1,12 @@
 import java.util.ArrayList;
 
 public class MP{
-    
     public String name;
+    
     public String electorate;
+    
     public String party;
+    
     public ArrayList<ArrayList<String>> interests;
 
     public MP(String name, String party, String electorate){
