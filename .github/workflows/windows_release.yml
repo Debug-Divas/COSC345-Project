@@ -126,7 +126,6 @@ jobs:
         uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          file: UnitTests\qt_application.xml
+          file: qt_application.xml
           fail_ci_if_error: true
           functionalities: fix
-
