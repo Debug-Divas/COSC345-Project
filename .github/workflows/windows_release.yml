@@ -112,7 +112,8 @@ jobs:
         run: |
           cd build-UnitTests
           cd debug
-          ./UnitTests.exe 
+          dir
+          UnitTests.exe 
 
       - name: Generate Report
         id: generate_test_report
