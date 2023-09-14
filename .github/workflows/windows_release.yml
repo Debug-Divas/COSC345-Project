@@ -112,7 +112,7 @@ jobs:
         run: |
           cd build-UnitTests
           cd debug
-          windeployqt UnitTests.exe 
+          ./UnitTests.exe 
 
       - name: Generate Report
         id: generate_test_report
