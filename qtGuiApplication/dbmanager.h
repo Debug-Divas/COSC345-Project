@@ -29,6 +29,12 @@ public:
 
     bool createFinancialInterestsTable();
 
+    bool createSpeechTable();
+
+    bool createSpeechContentTable();
+
+    bool createDebateTable();
+
 private:
     QSqlDatabase m_db;
 };

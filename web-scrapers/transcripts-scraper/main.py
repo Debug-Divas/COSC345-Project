@@ -14,6 +14,8 @@ import re
 
 from html_scraper import get_new_urls
 
+import os
+
 class Preface:
     title = ""
     link = ""
@@ -66,7 +68,7 @@ def parseSpeech(tag):
     c.type = "Speech"
 
     s.by = c.name
-    s.time = t
+    s.time = convert_to_datetime(t)
     s.content.append(c)
     return s
 
@@ -144,7 +146,9 @@ def convert_to_datetime(date_string):
 def getJustMpName(name):
     pattern = r'^(Rt\s)?Hon\s|\(.*\)$'
     cleaned_string = re.sub(pattern, '', name)
-    return cleaned_string.strip()
+    cleaned_string = cleaned_string.strip()
+    cleaned_string = cleaned_string.title()
+    return cleaned_string
 
 # creates list of debates from a single url
 def get_debates_from_url(url):
@@ -206,48 +210,64 @@ def get_debates_from_url(url):
                         if currentSpeech != None:
                             s = parseIntervention(para)
                             currentSpeech.content.append(s)
+
+
+
+    for debate in debates:
+        new_speeches = []
+        for s in range(len(debate.speeches)):
+            if isinstance(debate.speeches[s].time, datetime.datetime):
+                new_speeches.append(debate.speeches[s])
+        debate.speeches = new_speeches
+        for s in range(len(debate.speeches)-1):
+            if debate.speeches[s].time >= debate.speeches[s+1].time:
+                debate.speeches[s+1].time = debate.speeches[s].time + datetime.timedelta(seconds=1)
+
     return debates
 
 # writes the data from a list of debates (appends it to file doesn't write over it)
 def write_debates_to_csv(debates):
-    with open("web-scrapers/transcripts-scraper/debates.csv", mode='a', newline='', encoding="utf-8" ) as file:
+    with open("debates.csv", mode='a', newline='', encoding="utf-8" ) as file:
         csv_writer = csv.writer(file)
 
         for debate in debates:
             if len(debate.speeches) > 0:
-                csv_writer.writerow([debate.title, debate.subTitle, convert_to_datetime(debate.speeches[0].time)])
+                if not (debate.title == "na" or debate.subTitle == "na" or debate.speeches[0].time == "a"):
+                    csv_writer.writerow([debate.title, debate.subTitle, debate.speeches[0].time])
             else:
                 print(debate.title + " " + debate.subTitle)
 
-    with open("web-scrapers/transcripts-scraper/speeches.csv", mode='a', newline='', encoding="utf-8") as file:
+    with open("speeches.csv", mode='a', newline='', encoding="utf-8") as file:
         csv_writer = csv.writer(file)
 
         for debate in debates:
             for speech in debate.speeches:
                 if len(debate.speeches) > 0:
-                    csv_writer.writerow([getJustMpName(speech.by), convert_to_datetime(speech.time), convert_to_datetime(debate.speeches[0].time)])
+                    if not (speech.by == "na" or speech.time == "na" or debate.speeches[0].time == "na"):
+                        csv_writer.writerow([getJustMpName(speech.by), speech.time, debate.speeches[0].time])
                 else:
                     print(speech.by + " " + speech.time + " " + debate.title)
 
-    with open("web-scrapers/transcripts-scraper/speechContent.csv", mode='a', newline='', encoding="utf-8") as file:
+    with open("speechContent.csv", mode='a', newline='', encoding="utf-8") as file:
         csv_writer = csv.writer(file)
         i = 0
         for debate in debates:
             for speech in debate.speeches:
                 for content in speech.content:
-                    csv_writer.writerow([i, content.type, getJustMpName(content.name), content.text, convert_to_datetime(speech.time)])
+                    if not (content.type == "na" or content.name == "na" or content.text == "na" or speech.time == "na"):
+                        csv_writer.writerow([i, content.type, getJustMpName(content.name), content.text, speech.time])
                     i += 1
 # creates new csv files and adds the headers
 def init_csv_files():
-    with open("web-scrapers/transcripts-scraper/debates.csv", mode='w', newline='', encoding="utf-8" ) as file:
+    with open("debates.csv", mode='w', newline='', encoding="utf-8" ) as file:
         csv_writer = csv.writer(file)
         csv_writer.writerow(['Title', 'Subtitle', 'DateTime'])
 
-    with open("web-scrapers/transcripts-scraper/speeches.csv", mode='w', newline='', encoding="utf-8") as file:
+    with open("speeches.csv", mode='w', newline='', encoding="utf-8") as file:
         csv_writer = csv.writer(file)
         csv_writer.writerow(['Name', 'DateTime', 'Debate_Time'])
 
-    with open("web-scrapers/transcripts-scraper/speechContent.csv", mode='w', newline='', encoding="utf-8") as file:
+    with open("speechContent.csv", mode='w', newline='', encoding="utf-8") as file:
         csv_writer = csv.writer(file)
         csv_writer.writerow(['Speech_Content_ID', 'Type', 'Name', 'Text', 'Speech_Time'])
 
@@ -261,7 +281,11 @@ def main(dates):
 
 if __name__ == "__main__":
 
-    with open("web-scrapers/transcripts-scraper/validDates.json", "r") as file:
+    current_directory = os.getcwd()
+
+    print("Current working directory:", current_directory)
+
+    with open("validDates.json", "r") as file:
         valid_dates = json.load(file)
 
     init_csv_files()
