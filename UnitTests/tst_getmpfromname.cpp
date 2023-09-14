@@ -10,6 +10,7 @@ using namespace testing;
 
 TEST(dbmanager, dbmanagerTest)
 {
+    puts("test file");
     EXPECT_EQ(1, 1);
     ASSERT_THAT(0, Eq(0));
 }

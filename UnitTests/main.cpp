@@ -1,8 +1,11 @@
-
+#include <QDebug>
 #include <gtest/gtest.h>
 
 int main(int argc, char *argv[])
 {
+    puts("main");
     ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
+    RUN_ALL_TESTS();
+    puts("main fin");
+    return 0;
 }
