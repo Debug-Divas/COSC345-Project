@@ -1,5 +1,4 @@
-#include <QDebug>
-#include <gtest/gtest.h>
+#include <stdio.>
 
 int main(int argc, char *argv[])
 {

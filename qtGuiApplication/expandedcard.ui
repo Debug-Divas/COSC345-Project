@@ -82,6 +82,13 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QLabel" name="Electorate">
+        <property name="text">
+         <string>Mt Roskill</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
@@ -139,13 +146,13 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>971</width>
-           <height>354</height>
+           <width>960</width>
+           <height>542</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_2">
           <item>
-           <widget class="QLabel" name="label">
+           <widget class="QLabel" name="page_contents">
             <property name="mouseTracking">
              <bool>true</bool>
             </property>

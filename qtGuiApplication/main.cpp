@@ -19,11 +19,18 @@ int main(int argc, char* argv[])
     if (db.isOpen())
     {
        // db.createMpsTable();
-        std::vector<MP> mps = db.getAllMps();
-        for (size_t i = 0; i < mps.size(); ++i) {
-            qDebug() << "===" << mps[i].getName();
-            qDebug() << "===" << mps[i].getElectorate();
-        }
+
+        //db.createSpeechTable();
+
+        //db.createSpeechContentTable();
+
+        //db.createDebateTable();
+
+       // std::vector<MP> mps = db.getAllMps();
+       // for (size_t i = 0; i < mps.size(); ++i) {
+       //     qDebug() << "===" << mps[i].getName();
+       //     qDebug() << "===" << mps[i].getElectorate();
+       // }
 
         MP jamie = db.getMpFromName("Jamie Strange");
         qDebug() << "===" << jamie.getName();
