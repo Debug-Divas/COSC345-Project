@@ -21,8 +21,8 @@
 ## Doxygen
 [![Documentation](https://img.shields.io/badge/Documentation-Doxygen-blue.svg)](https://debug-divas.github.io/COSC345-Project/)
 
-
-
+## Code Coverage Report 
+[![C/C++ CI](https://codecov.io/gh/Debug-Divas/COSC345-Project/badge.svg?token=NA60E5SJRD)](https://app.codecov.io/gh/Debug-Divas/COSC345-Project)
 ## Github Actions
 ![Build](https://github.com/Debug-Divas/COSC345-Project/actions/workflows/windows_release.yml/badge.svg)
 
