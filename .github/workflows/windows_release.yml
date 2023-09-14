@@ -129,6 +129,5 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           directory: ${{ github.workspace }}\UnitTests
           files: qt_application.xml
-          verbose: true
           fail_ci_if_error: true
           functionalities: fix
