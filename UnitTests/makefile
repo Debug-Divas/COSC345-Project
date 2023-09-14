@@ -1,4 +1,4 @@
 main.exe : main.cpp
-	g++ -g -ftest-coverage main.cpp -o main.exe
+	cl /Zi main.cpp -o main.exe
 
 

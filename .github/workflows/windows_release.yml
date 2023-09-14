@@ -120,7 +120,7 @@ jobs:
         run: |
              cd UnitTests
              dir 
-             "C:\Program Files\OpenCppCoverage\OpenCppCoverage.exe" --sources ${{ runner.temp }}\qtGuiApplication --export_type cobertura:qt_application.xml -- main.exe
+             "C:\Program Files\OpenCppCoverage\OpenCppCoverage.exe" --export_type cobertura:qt_application.xml -- main.exe
       - name: Upload Report to Codecov
         uses: codecov/codecov-action@v2
         with:
