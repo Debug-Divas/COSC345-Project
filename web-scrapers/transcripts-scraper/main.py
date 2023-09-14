@@ -43,11 +43,11 @@ class SpeechContent:
 
 def flatten(tag):
     content = ""
-    for l in tag:
-        if l.string == None:
+    for line in tag:
+        if line.string is None:
             content = flatten(l)
         else:
-            content = content + l.string
+            content = content + line.string
     return content
 
 
@@ -295,6 +295,7 @@ if __name__ == "__main__":
     #valid_dates = ["20211109_20211109", "20220505_20220505", "20220510_20220510", "20201125_20201125"]
 
     debates = main(valid_dates)
+
     
     '''
     if len(sys.argv) == 2:
@@ -304,3 +305,4 @@ if __name__ == "__main__":
         print('[*] usage: python scrape.py "DATE"')
         print('[*]   e.g: python scrape.py 20170726')
 '''
+
