@@ -8,6 +8,7 @@ def stripList(input_list):
         new_list.append(line.strip())
     return new_list
 
+
 file_path = "output.txt"
 with open(file_path, "r") as file:
     text_string = file.read()
