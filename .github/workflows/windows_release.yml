@@ -119,12 +119,13 @@ jobs:
         working-directory: ${{ runner.temp }}
         run: |
              cd UnitTests
-             dir 
              "C:\Program Files\OpenCppCoverage\OpenCppCoverage.exe" --export_type cobertura:qt_application.xml -- main.exe
+             dir
+
       - name: Upload Report to Codecov
         uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          file: UnitTests/qt_application.xml
+          file: ${{ runner.temp }}\UnitTests\qt_application.xml
           fail_ci_if_error: true
           functionalities: fix
