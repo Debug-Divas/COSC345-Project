@@ -279,6 +279,7 @@ def main(dates):
         debates = get_debates_from_url(url)
         write_debates_to_csv(debates)
 
+
 if __name__ == "__main__":
 
     current_directory = os.getcwd()
