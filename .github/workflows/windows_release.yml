@@ -115,7 +115,7 @@ jobs:
           echo "run DIR"
           dir
           echo "run UnitTests.exe"
-          UnitTests.exe 
+          UnitTests
           echo "UnitTests.exe completed"
 
           
