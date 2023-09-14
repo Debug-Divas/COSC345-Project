@@ -117,6 +117,8 @@ jobs:
       - name: Generate Report
         id: generate_test_report
         working-directory: ${{ runner.temp }}
+        dir
+        dir /s main.exe
         run: |
              "C:\Program Files\OpenCppCoverage\OpenCppCoverage.exe" --sources ${{ runner.temp }}\qtGuiApplication --export_type cobertura:qt_application.xml -- main.exe
       - name: Upload Report to Codecov
