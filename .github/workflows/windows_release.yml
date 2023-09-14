@@ -123,9 +123,12 @@ jobs:
              dir
 
       - name: Upload Report to Codecov
+        run: |
+           dir ${{ runner.temp}}\UnitTests\qt_application.xml
         uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: ${{ runner.temp }}\UnitTests\qt_application.xml
           fail_ci_if_error: true
           functionalities: fix
+
