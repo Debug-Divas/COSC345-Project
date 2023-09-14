@@ -3,8 +3,8 @@
 int main(int argc, char *argv[])
 {
     puts("main");
-    //::testing::InitGoogleTest(&argc, argv);
-    //RUN_ALL_TESTS();
+    for (int x = 0; x < 10; x++)
+	    printf("%d\n", x);
     puts("main fin");
     return 0;
 }
