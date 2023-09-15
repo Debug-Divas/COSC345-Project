@@ -255,20 +255,25 @@
               </size>
              </property>
              <property name="text">
-              <string>Electorates:</string>
+              <string>MP type</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QComboBox" name="comboBox">
+            <widget class="QComboBox" name="typeMP">
              <item>
               <property name="text">
-               <string>Current Electorates</string>
+               <string>All</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>Former Electorates</string>
+               <string>List MP</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Electorates MP</string>
               </property>
              </item>
             </widget>

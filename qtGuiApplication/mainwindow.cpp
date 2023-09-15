@@ -139,7 +139,8 @@ void MainWindow::on_filterButton_clicked()
 {
     QString searchQuery = ui->searchQuery->text();
     QString partyQuery = ui->partyQuery->currentText();
-    qDebug() << searchQuery << " " << partyQuery;
+    QString typeMP = ui->typeMP->currentText();
+    qDebug() << searchQuery << " " << partyQuery << " " << typeMP;
 
     DbManager db(path);
     std::vector<MP> mps;
@@ -155,11 +156,9 @@ void MainWindow::on_filterButton_clicked()
 
         if (!mps.empty())
         {
-            if (searchQuery.isEmpty()) {
+            std::vector<MP> filteredMps;
+            if (!searchQuery.isEmpty()) {
                 showMpsOnScreen(mps);
-            }
-            else {
-                std::vector<MP> filteredMps;
                 for (size_t i = 0; i < mps.size(); ++i) {
                     if (mps[i].getName().toUpper().contains(searchQuery.toUpper())) {
                         qDebug() << mps[i].getName().toUpper();
@@ -172,10 +171,35 @@ void MainWindow::on_filterButton_clicked()
                         filteredMps.push_back(mps[i]);
                     }
                 }
+            }
+            else {
+                filteredMps = mps;
 
+            }
+            std::vector<MP> typeFilter;
+            if(typeMP == "All"){
+                qDebug() << "Im here";
                 showMpsOnScreen(filteredMps);
             }
+            else{
+                for (size_t i = 0; i < filteredMps.size(); ++i) {
 
+                    if(typeMP == "List MP"){
+                        qDebug() << "in List MP";
+                        if(filteredMps[i].getElectorate() == ""){
+                            typeFilter.push_back(filteredMps[i]);
+                        }
+                    }
+                    else if(typeMP == "Electorates MP"){
+                        qDebug() << "IN Elect";
+                        if(filteredMps[i].getElectorate() != ""){
+                            typeFilter.push_back(filteredMps[i]);
+                        }
+                    }
+
+                }
+                showMpsOnScreen(typeFilter);
+            }
         }
         else {
             qDebug() << "No mps found";
