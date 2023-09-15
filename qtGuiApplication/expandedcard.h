@@ -19,6 +19,7 @@ public:
 private:
     Ui::ExpandedCard *ui;
     MP mp;
+    void Show_Financials();
 signals:
     void okButtonClicked(); // Add the signal for the "OK" button
 

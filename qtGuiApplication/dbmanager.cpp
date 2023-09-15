@@ -93,8 +93,8 @@ std::vector<MP> DbManager::getAllMps()
 {
     std::vector<MP> allMps;
     qDebug() << "Persons in db:";
-    QSqlQuery query("SELECT * FROM mps");
-    //QSqlQuery query("SELECT mps.*, finances.* FROM mps LEFT JOIN Finances ON mps.name = Finances.mp_name;");
+    //QSqlQuery query("SELECT * FROM mps");
+    QSqlQuery query("SELECT mps.*, finances.* FROM mps LEFT JOIN Finances ON mps.name = Finances.mp_name;");
     int idName = query.record().indexOf("name");
     while (query.next())
     {
@@ -271,7 +271,20 @@ bool DbManager::createFinancialInterestsTable()
 
     while (!in.atEnd()) {
         QString line = in.readLine();
-        QStringList fields = line.split(",");
+        QStringList fields;
+        if(line.contains('"')){
+            QStringList fields1 = line.split('"');
+            for(int i = 0; i < fields1.size(); i++){
+                if(i % 2 == 1){
+                    fields.append(fields1[i]);
+                }else{
+                    fields.append(fields1[i].split(","));
+                    fields.pop_back();
+                }
+            }
+        }else{
+            fields = line.split(",");
+        }
 
         query.addBindValue(fields[0]);
         for (int i = 1; i < 14; i++) {
