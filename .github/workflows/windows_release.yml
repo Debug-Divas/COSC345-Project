@@ -115,9 +115,10 @@ jobs:
           
       - name: Generate Report
         id: generate_test_report
-        working-directory: ${{ github.workspace }}/build/debug
+        working-directory: ${{ github.workspace }}
         run: |
-             cd UnitTests
+             cd build
+             cd debug
              "C:\Program Files\OpenCppCoverage\OpenCppCoverage.exe" --export_type cobertura:qt_application.xml -- sqlite_qt.exe
              dir
 
