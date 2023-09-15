@@ -107,26 +107,27 @@ jobs:
           echo "C:\Program Files\OpenCppCoverage" >> $env:GITHUB_PATH
 
       - name: Compile tests and generate code coverage
-        working-directory: ${{ runner.temp }}
+        working-directory: ${{ github.workspace }}
         shell: cmd
         run: |
-          cd build-UnitTests
-          cd debug
-          echo "run DIR"
           dir
-          echo "run UnitTests.exe"
-          UnitTests
-          echo "UnitTests.exe completed"
-
+          cd UnitTests
+          make
+          main.exe
           
       - name: Generate Report
         id: generate_test_report
+        working-directory: ${{ github.workspace }}
         run: |
-             "C:\Program Files\OpenCppCoverage\OpenCppCoverage.exe" --sources ${{ runner.temp }}\qtGuiApplication --export_type cobertura:qt_application.xml
+             cd UnitTests
+             "C:\Program Files\OpenCppCoverage\OpenCppCoverage.exe" --export_type cobertura:qt_application.xml -- main.exe
+             dir
+
       - name: Upload Report to Codecov
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          file: ./qt_application.xml
+          directory: ${{ github.workspace }}\UnitTests
+          files: qt_application.xml
           fail_ci_if_error: true
           functionalities: fix

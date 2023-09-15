@@ -1,2 +1,4 @@
 main.exe : main.cpp
-    g++ main.cpp
+	cl /Zi main.cpp -o main.exe
+
+
