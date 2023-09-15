@@ -60,8 +60,6 @@ jobs:
              xcopy /E /I ${{env.SOURCE_DIR }} ${{ runner.temp}}\qtGuiApplication
              mkdir ${{ runner.temp }}\UnitTests
              xcopy /E /I ${{ env.SOURCE_DIR }}\UnitTests ${{ runner.temp }}\UnitTests
-             mkdir ${{ runner.temp }}\build-UnitTests
-             xcopy /E /I ${{ env.SOURCE_DIR }}\build-UnitTests ${{ runner.temp }}\build-UnitTests
 
       - name: (7) Set up Visual Studio shell
         uses: egor-tensin/vs-shell@v2
