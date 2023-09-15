@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>partyGREEN</class>
+ <widget class="QDialog" name="partyGREEN">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>581</width>
+    <height>658</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QFrame" name="frame">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QTextBrowser" name="textBrowser">
+        <property name="html">
+         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;h1 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:105.769%; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:xx-large; font-weight:700; color:#000000; background-color:#ffffff;&quot;&gt;Green Party&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:16pt; font-weight:700; color:#000000; background-color:#ffffff;&quot;&gt;The Green Party of Aotearoa / New Zealand (Green Party) has 10 members of Parliament, 9 from the party list and one electorate seat.&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:xx-large; font-weight:700; color:#000000; background-color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:medium; font-weight:700; color:#000000; background-color:#ffffff;&quot;&gt;Green Party in Parliament&lt;/span&gt;&lt;/h1&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:171.429%; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; color:#000000; background-color:#ffffff;&quot;&gt;The Greens, The Green Party of Aotearoa / New Zealand, first registered with the Electoral Commission in August 1995 and entered Parliament in 1995. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:171.429%; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; color:#000000; background-color:#ffffff;&quot;&gt;The party is led by&lt;/span&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; color:#000000;&quot;&gt; &lt;/span&gt;&lt;a href=&quot;https://www.parliament.nz/en/mps-and-electorates/members-of-parliament/shaw-james/&quot;&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; font-weight:700; text-decoration: underline; color:#007179;&quot;&gt;Hon James Shaw&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; font-weight:700; color:#000000;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; color:#000000;&quot;&gt;and&lt;/span&gt;&lt;a href=&quot;https://www.parliament.nz/en/mps-and-electorates/members-of-parliament/davidson-marama/&quot;&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; font-weight:700; text-decoration: underline; color:#007179;&quot;&gt; Marama Davidson&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; font-weight:700; color:#000000;&quot;&gt;.&lt;/span&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; color:#000000;&quot;&gt;  The Green Party signed a Co-operation Agreement with the New Zealand Labour Party on 1 November 2020.&lt;/span&gt;&lt;/p&gt;
+&lt;h4 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:116.667%; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:medium; font-weight:700; color:#000000; background-color:#ffffff;&quot;&gt;Green Charter&lt;/span&gt;&lt;/h4&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:171.429%; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; font-style:italic; color:#000000;&quot;&gt;'The charter is the founding document of The Green Party of Aotearoa New Zealand.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:171.429%; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; font-style:italic; color:#000000;&quot;&gt;The Green Party of Aotearoa New Zealand accepts Te Tiriti o Waitangi as the founding document of Aotearoa New Zealand; recognises Maori as Tangata Whenua in Aotearoa New Zealand; and commits to the following four Principles:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:171.429%; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; font-weight:700; font-style:italic; color:#000000;&quot;&gt;Ecological Wisdom:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:171.429%; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; font-style:italic; color:#000000;&quot;&gt;The basis of ecological wisdom is that human beings are part of the natural world. This world is finite, therefore unlimited material growth is impossible. Ecological sustainability is paramount.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:171.429%; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; font-weight:700; font-style:italic; color:#000000;&quot;&gt;Social Responsibility:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:171.429%; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; font-style:italic; color:#000000;&quot;&gt;Unlimited material growth is impossible. Therefore the key to social responsibility is the just distribution of social and natural resources, both locally and globally.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:171.429%; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; font-weight:700; font-style:italic; color:#000000;&quot;&gt;Appropriate Decision-making:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:171.429%; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; font-style:italic; color:#000000;&quot;&gt;For the implementation of ecological wisdom and social responsibility, decisions will be made directly at the appropriate level by those affected.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:171.429%; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; font-weight:700; font-style:italic; color:#000000;&quot;&gt;Non-Violence:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:171.429%; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; font-style:italic; color:#000000;&quot;&gt;Non-violent conflict resolution is the process by which ecological wisdom, social responsibility and appropriate decision making will be implemented. This principle applies at all levels.'&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

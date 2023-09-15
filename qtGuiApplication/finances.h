@@ -9,10 +9,10 @@ class Finances
 public:
     Finances();
     Finances(const QString mp_name, const QStringList company_directorships,
-        const QStringList other_companies, const QStringList employment, const QStringList interest_trust,
-        const QStringList organizations, const QStringList property, const QStringList retirement,
-        const QStringList investment_schemes, const QStringList debts_to_you, const QStringList debts_owed_by_you,
-        const QStringList overseas_travel, const QStringList gifts, const QStringList payment_activities);
+             const QStringList other_companies, const QStringList employment, const QStringList interest_trust,
+             const QStringList organizations, const QStringList property, const QStringList retirement,
+             const QStringList investment_schemes, const QStringList debts_to_you, const QStringList debts_owed_by_you,
+             const QStringList overseas_travel, const QStringList gifts, const QStringList payment_activities);
 
     QString getMpName() const;
     QStringList getCompanyDirectorships() const;

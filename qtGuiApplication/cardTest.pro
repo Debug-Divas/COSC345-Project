@@ -28,7 +28,11 @@ SOURCES += \
     mainwindow.cpp \
     mp.cpp \
     finances.cpp \
-    parties.cpp
+    parties.cpp \
+    partyact.cpp \
+    partygreen.cpp \
+    partymaori.cpp \
+    partynational.cpp
 
 HEADERS += \
     card.h \
@@ -38,14 +42,22 @@ HEADERS += \
     mainwindow.h \
     mp.h \
     finances.h \
-    parties.h
+    parties.h \
+    partyact.h \
+    partygreen.h \
+    partymaori.h \
+    partynational.h
 
 FORMS += \
     card.ui \
     dialog.ui \
     expandedcard.ui \
     mainwindow.ui \
-    parties.ui
+    parties.ui \
+    partyact.ui \
+    partygreen.ui \
+    partymaori.ui \
+    partynational.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

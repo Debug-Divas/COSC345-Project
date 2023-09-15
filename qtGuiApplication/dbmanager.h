@@ -1,16 +1,13 @@
 #ifndef DBMANAGER_H
 #define DBMANAGER_H
-
 #include <QSqlDatabase>
-
 #include "mp.h"
 #include "finances.h"
 
 class DbManager
 {
 public:
-    
-    DbManager(const QString& path);
+    DbManager(const QString &path);
 
     ~DbManager();
 
@@ -21,10 +18,10 @@ public:
 
     std::vector<MP> getAllMps();
 
-    std::vector<MP> getAllMpsFromParty(const QString& party);
+    std::vector<MP> getAllMpsFromParty(const QString &party);
 
-    MP getMpFromName(const QString& name);
-    
+    MP getMpFromName(const QString &name);
+
     std::vector<Finances> getAllFinances();
 
     bool createFinancialInterestsTable();
