@@ -47,7 +47,6 @@ void MainWindow::handleExpandButtonClicked(MP mp)
     }
 }
 
-
 void MainWindow::handleOkButtonClicked()
 {
         for (Card *card : cards) {
@@ -109,9 +108,6 @@ void MainWindow::showMpsOnScreen(std::vector<MP> mps) {
     }
 }
 
-
-
-
 void MainWindow::clearCardsLayout()
 {
     for (Card *card : cards) {
@@ -161,7 +157,7 @@ void MainWindow::on_filterButton_clicked()
             if (!searchQuery.isEmpty()) {
                 showMpsOnScreen(mps);
                 for (size_t i = 0; i < mps.size(); ++i) {
-                    if (mps[i].getName().toUpper().contains(searchQuery.toUpper())) {
+                    if (mps[i].getName().replace("ā","a").replace("é","e").replace("ö","o").toUpper().contains(searchQuery.toUpper())) {
                         qDebug() << mps[i].getName().toUpper();
                         filteredMps.push_back(mps[i]);
                     }
