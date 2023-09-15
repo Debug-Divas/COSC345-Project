@@ -7,7 +7,8 @@
 #include <QDebug>
 #include <QBoxLayout>
 #include <dbmanager.h>
-
+#include <QPixmap>
+#include <QLabel>
 static const QString path = "parliament.db";
 
 MainWindow::MainWindow(QWidget *parent)
@@ -261,8 +262,38 @@ void MainWindow::removeParties()
 
 void MainWindow::on_electionStatsButton_clicked()
 {
-//    ui->filterOptions->hide(); // Assuming the name of the filter bar widget is "filterOptions"
+    // Clear the layout of a widget and delete its child widgets
+    QLayout *layout = ui->frame_5->layout();
+    if (layout) {
+        while (QLayoutItem* item = layout->takeAt(0)) {
+            if (QWidget* widget = item->widget()) {
+                delete widget;
+            }
+            delete item;
+        }
+        delete layout;
+    }
+    ui->filterOptions->hide();
+    ui->scrollArea->hide();
 
-    qDebug() << "Election Stats Button Clicked";
+    // Create a QLabel to display the image
+    QLabel *imageLabel = new QLabel(ui->frame_5);
+
+    // Load an image (replace "imagePath.png" with your image file's path)
+    QPixmap pixmap("../images/statistics.PNG");
+
+    if (!pixmap.isNull()) {
+        // Set the image in the QLabel
+        QPixmap resizedPixmap = pixmap.scaled(1180, 520, Qt::KeepAspectRatio);
+        imageLabel->setPixmap(pixmap);
+        imageLabel->setScaledContents(true); // Optionally, scale the image to fit the QLabel
+        imageLabel->show();
+
+        // Create a QVBoxLayout for ui->frame_5 and add the QLabel to it
+        QVBoxLayout* frameLayout = new QVBoxLayout(ui->frame_5);
+        frameLayout->addWidget(imageLabel);
+        ui->frame_5->setLayout(frameLayout);
+    } else {
+        qDebug() << "Failed to load the image.";
+    }
 }
-

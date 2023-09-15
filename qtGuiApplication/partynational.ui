@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>590</width>
-    <height>673</height>
+    <width>854</width>
+    <height>692</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,13 +24,6 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>National Party</string>
-        </property>
-       </widget>
-      </item>
-      <item>
        <widget class="QTextBrowser" name="textBrowser">
         <property name="html">
          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -40,73 +33,10 @@ hr { height: 1px; border-width: 0; }
 li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:18px; color:#000000; background-color:#ffffff;&quot;&gt;The New Zealand National Party (National Party) has 34 members of Parliament, 10 elected from the party list and 24 from electorate seats. The National Party is in Opposition.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
-    <widget class="QFrame" name="frame_2">
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_3">
-      <item>
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>New Zealand National Party in Parliament</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QTextBrowser" name="textBrowser_2">
-        <property name="html">
-         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;h1 style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:105.769%; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:xx-large; font-weight:700; color:#000000; background-color:#ffffff;&quot;&gt;National Party&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:xx-large; font-weight:700; color:#000000; background-color:#ffffff;&quot;&gt;The New Zealand National Party (National Party) has 34 members of Parliament, 10 elected from the party list and 24 from electorate seats. The National Party is in Opposition.&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:medium; font-weight:700; color:#000000; background-color:#ffffff;&quot;&gt;New Zealand National Party in Parliament&lt;/span&gt;&lt;/h1&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:171.429%; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; color:#000000; background-color:#ffffff;&quot;&gt;The New Zealand National Party was established in 1936 from the Reform-United Coalition. The party first entered Parliament that same year.  The party has been in five Governments: 1949–1957, 1960–1972, 1975–1984, 1990–1999, and 2008-2017.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:171.429%; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; color:#000000; background-color:#ffffff;&quot;&gt;The party leader is&lt;/span&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; color:#000000;&quot;&gt; &lt;/span&gt;&lt;a href=&quot;https://www.parliament.nz/en/mps-and-electorates/members-of-parliament/luxon-christopher/&quot;&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; font-weight:700; text-decoration: underline; color:#007179;&quot;&gt;Christopher Luxon&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; color:#000000;&quot;&gt;, Leader of the Opposition and member for Botany.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
-    <widget class="QFrame" name="frame_3">
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_4">
-      <item>
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>National Party message</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QTextBrowser" name="textBrowser_3">
-        <property name="html">
-         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:171.429%; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; color:#000000; background-color:#ffffff;&quot;&gt;The party leader is&lt;/span&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; color:#000000;&quot;&gt; &lt;/span&gt;&lt;a href=&quot;https://www.parliament.nz/en/mps-and-electorates/members-of-parliament/luxon-christopher/&quot;&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; font-weight:700; text-decoration: underline; color:#007179;&quot;&gt;Christopher Luxon&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; color:#000000;&quot;&gt;, Leader of the Opposition and member for Botany.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:171.429%; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; font-weight:700; color:#000000;&quot;&gt;National Party message&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:171.429%; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; font-style:italic; color:#000000;&quot;&gt;'The National Party has always valued enterprise, hard work and the rewards that go with success. We will continue to aspire to a New Zealand where all New Zealanders can flourish.&lt;/span&gt;&lt;/p&gt;
 &lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;
 &lt;li style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; color:#000000; background-color:#ffffff;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:34px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:171.429%;&quot;&gt;&lt;span style=&quot; font-size:14px; font-style:italic;&quot;&gt;We believe this will be achieved by building a society based on the following values:&lt;/span&gt;&lt;/li&gt;
@@ -118,7 +48,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
 &lt;li style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; color:#000000; background-color:#ffffff;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:34px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:171.429%;&quot;&gt;&lt;span style=&quot; font-size:14px; font-style:italic;&quot;&gt;Competitive enterprise and reward for achievement&lt;/span&gt;&lt;/li&gt;
 &lt;li style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; color:#000000; background-color:#ffffff;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:34px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:171.429%;&quot;&gt;&lt;span style=&quot; font-size:14px; font-style:italic;&quot;&gt;Limited government&lt;/span&gt;&lt;/li&gt;
 &lt;li style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; color:#000000; background-color:#ffffff;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:34px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:171.429%;&quot;&gt;&lt;span style=&quot; font-size:14px; font-style:italic;&quot;&gt;Strong families and caring communities&lt;/span&gt;&lt;/li&gt;
-&lt;li style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; color:#000000; background-color:#ffffff;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:34px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:171.429%;&quot;&gt;&lt;span style=&quot; font-size:14px; font-style:italic;&quot;&gt;Sustainable development of our environment'&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;li style=&quot; font-family:'Open Sans','Arial','Verdana','sans-serif'; font-size:14px; color:#000000; background-color:#ffffff;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:34px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:171.429%;&quot;&gt;&lt;span style=&quot; font-size:14px; font-style:italic;&quot;&gt;Sustainable development of our environment'&lt;/span&gt;&lt;span style=&quot; font-size:18px;&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </item>
