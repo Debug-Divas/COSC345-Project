@@ -60,6 +60,8 @@ jobs:
              xcopy /E /I ${{env.SOURCE_DIR }} ${{ runner.temp}}\qtGuiApplication
              mkdir ${{ runner.temp }}\UnitTests
              xcopy /E /I ${{ env.SOURCE_DIR }}\UnitTests ${{ runner.temp }}\UnitTests
+             mkdir ${{ runner.temp }}\build-UnitTests
+             xcopy /E /I ${{ env.SOURCE_DIR }}\build-UnitTests ${{ runner.temp }}\build-UnitTests
 
       - name: (7) Set up Visual Studio shell
         uses: egor-tensin/vs-shell@v2
@@ -110,16 +112,15 @@ jobs:
         run: |
           dir
           cd UnitTests
-        # make
-        # main.exe
+          make
+          main.exe
           
       - name: Generate Report
         id: generate_test_report
         working-directory: ${{ github.workspace }}
         run: |
-             cd build
-             cd debug
-             "C:\Program Files\OpenCppCoverage\OpenCppCoverage.exe" --export_type cobertura:qt_application.xml -- sqlite_qt.exe
+             cd UnitTests
+             "C:\Program Files\OpenCppCoverage\OpenCppCoverage.exe" --export_type cobertura:qt_application.xml -- main.exe
              dir
 
       - name: Upload Report to Codecov
