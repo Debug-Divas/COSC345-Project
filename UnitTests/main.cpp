@@ -1,19 +1,19 @@
 #include <stdio.h>
-
 #include "../qtGuiApplication/dbmanager.h"
 
 int another(int param)
 {
-puts("Something");
-if (param == 0)
-	puts("Zero");
-else
-	puts("non Zero");
+    puts("Something");
+    if (param == 0)
+        puts("Zero");
+    else
+        puts("non Zero");
 
-return 0;
+    return 0;
 }
 
-bool test_mp_name(){
+bool test_mp_name()
+{
 
     static const QString path = "parliament.db";
 
@@ -26,7 +26,8 @@ bool test_mp_name(){
     return name == mp.getName();
 }
 
-bool test_mp_name_special(){
+bool test_mp_name_special()
+{
 
     static const QString path = "parliament.db";
 
@@ -44,18 +45,20 @@ bool test_mp_name_special(){
     return (name1 == mp1.getName() && name2 == mp2.getName() && name3 == mp3.getName());
 }
 
-bool test_get_all_mps(){
+bool test_get_all_mps()
+{
     static const QString path = "little_parliament.db";
 
     DbManager db(path);
 
     std::vector<MP> all_mps = db.getAllMps()
 
-    std::vector<QString> names = {"Kiritapu Allan", "Ginny Andersen", "Chris Baillie"};
+                                  std::vector<QString>
+                                      names = {"Kiritapu Allan", "Ginny Andersen", "Chris Baillie"};
 
-    for(unsigned int i = 0; i < 3; i++)
+    for (unsigned int i = 0; i < 3; i++)
     {
-        if(all_mps[i].getName() != names[i])
+        if (all_mps[i].getName() != names[i])
         {
             return false;
         }
@@ -68,7 +71,7 @@ int main(int argc, char *argv[])
     puts("main");
 
     for (int x = 0; x < 10; x++)
-	    printf("%d\n", x);
+        printf("%d\n", x);
     another(0);
     puts("main fin");
 

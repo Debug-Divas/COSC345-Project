@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'expandedcard.ui'
 **
-** Created by: Qt User Interface Compiler version 6.5.1
+** Created by: Qt User Interface Compiler version 6.5.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -38,6 +38,7 @@ public:
     QVBoxLayout *verticalLayout;
     QLabel *Name;
     QLabel *Party;
+    QLabel *Electorate;
     QLabel *Portrait;
     QDialogButtonBox *okButton;
     QWidget *widget_2;
@@ -45,7 +46,7 @@ public:
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents_2;
     QVBoxLayout *verticalLayout_2;
-    QLabel *label;
+    QLabel *page_contents;
 
     void setupUi(QDialog *ExpandedCard)
     {
@@ -95,6 +96,11 @@ public:
 
         verticalLayout->addWidget(Party);
 
+        Electorate = new QLabel(widget);
+        Electorate->setObjectName("Electorate");
+
+        verticalLayout->addWidget(Electorate);
+
 
         gridLayout->addWidget(widget, 0, 1, 1, 1);
 
@@ -125,16 +131,16 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName("scrollAreaWidgetContents_2");
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 971, 354));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 960, 542));
         verticalLayout_2 = new QVBoxLayout(scrollAreaWidgetContents_2);
         verticalLayout_2->setObjectName("verticalLayout_2");
-        label = new QLabel(scrollAreaWidgetContents_2);
-        label->setObjectName("label");
-        label->setMouseTracking(true);
-        label->setLayoutDirection(Qt::RightToLeft);
-        label->setWordWrap(true);
+        page_contents = new QLabel(scrollAreaWidgetContents_2);
+        page_contents->setObjectName("page_contents");
+        page_contents->setMouseTracking(true);
+        page_contents->setLayoutDirection(Qt::RightToLeft);
+        page_contents->setWordWrap(true);
 
-        verticalLayout_2->addWidget(label);
+        verticalLayout_2->addWidget(page_contents);
 
         scrollArea->setWidget(scrollAreaWidgetContents_2);
 
@@ -157,8 +163,9 @@ public:
         VotesButton->setText(QCoreApplication::translate("ExpandedCard", "Votes", nullptr));
         Name->setText(QCoreApplication::translate("ExpandedCard", "<html><head/><body><p><span style=\" font-weight:700;\">Michael wood</span></p></body></html>", nullptr));
         Party->setText(QCoreApplication::translate("ExpandedCard", "<html><head/><body><p><span style=\" font-weight:700;\">Labour MP for Mt Roskill</span></p></body></html>", nullptr));
+        Electorate->setText(QCoreApplication::translate("ExpandedCard", "Mt Roskill", nullptr));
         Portrait->setText(QString());
-        label->setText(QCoreApplication::translate("ExpandedCard", "So, I grab my axe, hook up to the Marshal stack, an\342\200\231 ramp it all the way up to 11. The crowd didn\342\200\231t know what hit \342\200\230em. I really made their ears bleed, man. [laughs raucously]So, I grab my axe, hook up to the Marshal stack, an\342\200\231 ramp it all the way up to 11. The crowd didn\342\200\231t know what hit \342\200\230em. I really made their ears bleed, man. [laughs raucously]So, I grab my axe, hook up to the Marshal stack, an\342\200\231 ramp it all the way up to 11. The crowd didn\342\200\231t know what hit \342\200\230em. I really made their ears bleed, man. [laughs raucously]So, I grab my axe, hook up to the Marshal stack, an\342\200\231 ramp it all the way up to 11. The crowd didn\342\200\231t know what hit \342\200\230em. I really made their ears bleed, man. [laughs raucously]So, I grab my axe, hook up to the Marshal stack, an\342\200\231 ramp it all the way up to 11. The crowd didn\342\200\231t know what hit \342\200\230em. I really made their ears bleed, man. [laughs "
+        page_contents->setText(QCoreApplication::translate("ExpandedCard", "So, I grab my axe, hook up to the Marshal stack, an\342\200\231 ramp it all the way up to 11. The crowd didn\342\200\231t know what hit \342\200\230em. I really made their ears bleed, man. [laughs raucously]So, I grab my axe, hook up to the Marshal stack, an\342\200\231 ramp it all the way up to 11. The crowd didn\342\200\231t know what hit \342\200\230em. I really made their ears bleed, man. [laughs raucously]So, I grab my axe, hook up to the Marshal stack, an\342\200\231 ramp it all the way up to 11. The crowd didn\342\200\231t know what hit \342\200\230em. I really made their ears bleed, man. [laughs raucously]So, I grab my axe, hook up to the Marshal stack, an\342\200\231 ramp it all the way up to 11. The crowd didn\342\200\231t know what hit \342\200\230em. I really made their ears bleed, man. [laughs raucously]So, I grab my axe, hook up to the Marshal stack, an\342\200\231 ramp it all the way up to 11. The crowd didn\342\200\231t know what hit \342\200\230em. I really made their ears bleed, man. [laughs "
                         "raucously]So, I grab my axe, hook up to the Marshal stack, an\342\200\231 ramp it all the way up to 11. The crowd didn\342\200\231t know what hit \342\200\230em. I really made their ears bleed, man. [laughs raucously]So, I grab my axe, hook up to the Marshal stack, an\342\200\231 ramp it all the way up to 11. The crowd didn\342\200\231t know what hit \342\200\230em. I really made their ears bleed, man. [laughs raucously]So, I grab my axe, hook up to the Marshal stack, an\342\200\231 ramp it all the way up to 11. The crowd didn\342\200\231t know what hit \342\200\230em. I really made their ears bleed, man. [laughs raucously]So, I grab my axe, hook up to the Marshal stack, an\342\200\231 ramp it all the way up to 11. The crowd didn\342\200\231t know what hit \342\200\230em. I really made their ears bleed, man. [laughs raucously]So, I grab my axe, hook up to the Marshal stack, an\342\200\231 ramp it all the way up to 11. The crowd didn\342\200\231t know what hit \342\200\230em. I really made their ears bleed, man"
                         ". [laughs raucously]So, I grab my axe, hook up to the Marshal stack, an\342\200\231 ramp it all the way up to 11. The crowd didn\342\200\231t know what hit \342\200\230em. I really made thSo, I grab my axe, hook up to the Marshal stack, an\342\200\231 ramp it all the way up to 11. The crowd didn\342\200\231t know what hit \342\200\230em. I really made their ears bleed, man. [laughs raucously]So, I grab my axe, hook up to the Marshal stack, an\342\200\231 ramp it all the way up to 11. The crowd didn\342\200\231t know what hit \342\200\230em. I really made their ears bleed, man. [laughs raucously]So, I grab my axe, hook up to the Marshal stack, an\342\200\231 ramp it all the way up to 11. The crowd didn\342\200\231t know what hit \342\200\230em. I really made their ears bleed, man. [laughs raucously]So, I grab my axe, hook up to the Marshal stack, an\342\200\231 ramp it all the way up to 11. The crowd didn\342\200\231t know what hit \342\200\230em. I really made their ears bleed, man. [laughs raucously]So, I gra"
                         "b my axe, hook up to the Marshal stack, an\342\200\231 ramp it all the way up to 11. The crowd didn\342\200\231t know what hit \342\200\230em. I really made their ears bleed, man. [laughs raucously]So, I grab my axe, hook up to the Marshal stack, an\342\200\231 ramp it all the way up to 11. The crowd didn\342\200\231t know what hit \342\200\230em. I really made their ears bleed, man. [laughs raucously]So, I grab my axe, hook up to the Marshal stack, an\342\200\231 ramp it all the way up to 11. The crowd didn\342\200\231t know what hit \342\200\230em. I really made their ears bleed, man. [laughs raucously]So, I grab my axe, hook up to the Marshal stack, an\342\200\231 ramp it all the way up to 11. The crowd didn\342\200\231t know what hit \342\200\230em. I really made their ears bleed, man. [laughs raucously]So, I grab my axe, hook up to the Marshal stack, an\342\200\231 ramp it all the way up to 11. The crowd didn\342\200\231t know what hit \342\200\230em. I really made their ears bleed, man. [laughs raucously"

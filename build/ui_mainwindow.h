@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 6.5.1
+** Created by: Qt User Interface Compiler version 6.5.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -52,7 +52,7 @@ public:
     QFrame *frame_4;
     QHBoxLayout *horizontalLayout_4;
     QLabel *label_3;
-    QComboBox *comboBox;
+    QComboBox *typeMP;
     QPushButton *filterButton;
     QSpacerItem *verticalSpacer;
     QScrollArea *scrollArea;
@@ -98,6 +98,7 @@ public:
 
         frame_5 = new QFrame(centralwidget);
         frame_5->setObjectName("frame_5");
+        frame_5->setMaximumSize(QSize(1180, 530));
         frame_5->setFrameShape(QFrame::StyledPanel);
         frame_5->setFrameShadow(QFrame::Raised);
         filterOptions = new QWidget(frame_5);
@@ -187,12 +188,13 @@ public:
 
         horizontalLayout_4->addWidget(label_3);
 
-        comboBox = new QComboBox(frame_4);
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->setObjectName("comboBox");
+        typeMP = new QComboBox(frame_4);
+        typeMP->addItem(QString());
+        typeMP->addItem(QString());
+        typeMP->addItem(QString());
+        typeMP->setObjectName("typeMP");
 
-        horizontalLayout_4->addWidget(comboBox);
+        horizontalLayout_4->addWidget(typeMP);
 
 
         verticalLayout->addWidget(frame_4);
@@ -261,9 +263,10 @@ public:
         partyQuery->setItemText(5, QCoreApplication::translate("MainWindow", "ACT New Zealand", nullptr));
         partyQuery->setItemText(6, QCoreApplication::translate("MainWindow", "Independent", nullptr));
 
-        label_3->setText(QCoreApplication::translate("MainWindow", "Electorates:", nullptr));
-        comboBox->setItemText(0, QCoreApplication::translate("MainWindow", "Current Electorates", nullptr));
-        comboBox->setItemText(1, QCoreApplication::translate("MainWindow", "Former Electorates", nullptr));
+        label_3->setText(QCoreApplication::translate("MainWindow", "MP type", nullptr));
+        typeMP->setItemText(0, QCoreApplication::translate("MainWindow", "All", nullptr));
+        typeMP->setItemText(1, QCoreApplication::translate("MainWindow", "List MP", nullptr));
+        typeMP->setItemText(2, QCoreApplication::translate("MainWindow", "Electorates MP", nullptr));
 
         filterButton->setText(QCoreApplication::translate("MainWindow", "Filter", nullptr));
     } // retranslateUi
