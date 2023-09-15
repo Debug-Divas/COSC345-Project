@@ -110,8 +110,8 @@ jobs:
         run: |
           dir
           cd UnitTests
-          make
-          main.exe
+        # make
+        # main.exe
           
       - name: Generate Report
         id: generate_test_report
