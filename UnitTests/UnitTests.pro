@@ -6,7 +6,7 @@ QT += gui
 QT += sql
 
 TEMPLATE = app
-CONFIG += console c++11
+CONFIG += console c++11 debug
 CONFIG -= app_bundle
 CONFIG += thread
 #CONFIG -= qt
