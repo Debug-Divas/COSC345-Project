@@ -69,7 +69,7 @@ jobs:
 
       - name: Copy Qt Headers to UnitTests
         run: |
-          set "QT_HEADERS_SOURCE=${{ runner.temp }}\qt\include"
+          set "QT_HEADERS_SOURCE=${{ runner.temp }}\qt\${{ env.QT_VERSION }}\msvc2019_64\include"
           set "UNIT_TESTS_DIR=${{ github.workspace }}\UnitTests"
       
           mkdir "%UNIT_TESTS_DIR%\include"
