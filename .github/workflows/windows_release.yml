@@ -114,10 +114,10 @@ jobs:
         shell: cmd
         run: |
           dir
-          cd UnitTests
-          make install-qt-dependencies
-          make
-          main.exe
+          
+          
+          make all
+          unit_test.exe
           
       - name: Generate Report
         id: generate_test_report
