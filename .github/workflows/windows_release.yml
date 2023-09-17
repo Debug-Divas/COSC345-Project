@@ -123,8 +123,9 @@ jobs:
         run: |
           dir
           
-          cl /Zi /I${{ runner.temp }}\qt\${{ env.QT_VERSION }}\msvc2019_64\include UnitTests/main.cpp -o unit_test.exe
-          unit_test.exe
+          qmake UnitTests/UnitTests.pro
+          make
+          ./unit_test.exe
           
       - name: Generate Report
         id: generate_test_report
