@@ -110,6 +110,7 @@ jobs:
         run: |
           dir
           cd UnitTests
+          make install-qt-dependencies
           make
           main.exe
           
