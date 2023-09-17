@@ -1,5 +1,3 @@
-include(gtest_dependency.pri)
-
 TEMPLATE = app
 TARGET = UnitTests
 
@@ -16,7 +14,6 @@ INCLUDEPATH += \
 
 SOURCES += \
         main.cpp \
-        tst_getmpfromname.cpp \
         ../qtGuiApplication/dbmanager.cpp \
         ../qtGuiApplication/finances.cpp \
         ../qtGuiApplication/mp.cpp
