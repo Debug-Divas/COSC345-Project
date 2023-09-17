@@ -1,2 +1,2 @@
-main.exe: main.cpp
-    cl /Zi main.cpp -o main.exe
+main.exe: UnitTests/main.cpp
+    cl /Zi UnitTests/main.cpp -o main.exe
