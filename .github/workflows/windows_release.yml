@@ -123,9 +123,8 @@ jobs:
         run: |
           dir
           
-          
           make unit_test.exe
-          unit_tests.exe
+          unit_test.exe
           
       - name: Generate Report
         id: generate_test_report
