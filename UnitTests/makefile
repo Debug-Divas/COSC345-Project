@@ -1,4 +1,4 @@
-main.exe : install-qt-dependencies:
+main.exe : main.cpp
     cl /Zi main.cpp -o main.exe
 
 install-qt-dependencies:
