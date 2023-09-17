@@ -24,7 +24,7 @@ jobs:
     runs-on:  windows-latest
     steps:
       - name: (1) Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: recursive
 
@@ -67,16 +67,6 @@ jobs:
         with:
           arch: x64
 
-      - name: Copy Qt Headers to UnitTests
-        run: |
-          set "QT_HEADERS_SOURCE=%{runner.temp}\qt\include"
-          set "UNIT_TESTS_DIR=%{github.workspace}\UnitTests"
-      
-          mkdir "%UNIT_TESTS_DIR%\include"
-      
-          copy /Y "%QT_HEADERS_SOURCE%\QtCore" "%UNIT_TESTS_DIR%\include\"
-          copy /Y "%QT_HEADERS_SOURCE%\QtGui" "%UNIT_TESTS_DIR%\include\"
-        working-directory: ${{ runner.temp }}
 
 
 
