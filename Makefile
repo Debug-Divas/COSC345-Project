@@ -1,7 +1,7 @@
-all: unit_test.exe application.exe
+all: main.exe unit_test.exe
 
-application.exe: qtGuiApplication/main.cpp
-	cl /Zi qtGuiApplication/main.cpp -o application.exe
+main.exe: qtGuiApplication/main.cpp
+	cl /Zi qtGuiApplication/main.cpp -o main.exe
 
-unit_test.exe: UnitTests/main.cpp
-	cl /Zi UnitTests/main.cpp -o unit_test.exe
+unit_test.exe: UnitTests/UnitTests.cpp
+	cl /Zi UnitTests/UnitTests.cpp -o unit_tests.exe
