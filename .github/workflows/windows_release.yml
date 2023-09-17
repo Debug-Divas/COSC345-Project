@@ -108,8 +108,6 @@ jobs:
       - name: Compile tests and generate code coverage
         working-directory: ${{ github.workspace }}
         run: |
-          dir
-
           qmake UnitTests/UnitTests.pro
           cat Makefile.Debug
           make
