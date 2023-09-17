@@ -34,7 +34,7 @@ jobs:
           git fetch --all --tags -f
           
       - name: (3) Install Qt
-        uses: jurplel/install-qt-action@v2
+        uses: jurplel/install-qt-action@v3
         with:
           version:      ${{ env.QT_VERSION }}
           host:         windows
@@ -67,8 +67,17 @@ jobs:
         with:
           arch: x64
 
-
-
+      - name: Copy Qt Headers to UnitTests
+        run: |
+          set "QT_HEADERS_SOURCE=%{runner.temp}\qt\include"
+          set "UNIT_TESTS_DIR=%{github.workspace}\UnitTests"
+      
+          mkdir "%UNIT_TESTS_DIR%\include"
+      
+          copy /Y "%QT_HEADERS_SOURCE%\QtCore" "%UNIT_TESTS_DIR%\include\"
+          copy /Y "%QT_HEADERS_SOURCE%\QtGui" "%UNIT_TESTS_DIR%\include\"
+        working-directory: ${{ runner.temp }}
+  
 
       - name: (8) Build
         working-directory: ${{ runner.temp }}
