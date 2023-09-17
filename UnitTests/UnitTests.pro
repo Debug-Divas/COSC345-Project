@@ -1,7 +1,9 @@
 TEMPLATE = app
 TARGET = UnitTests
 
-QT       += core gui sql
+QT += core
+QT += gui 
+QT += sql
 
 TEMPLATE = app
 CONFIG += console c++11
