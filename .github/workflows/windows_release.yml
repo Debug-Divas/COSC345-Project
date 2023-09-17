@@ -109,8 +109,8 @@ jobs:
         working-directory: ${{ github.workspace }}
         run: |
           dir
-          
-          qmake UnitTests/UnitTests.pro
+
+          qmake -spec %YOUR_QTPATH%\mkspecs\win32-g++ UnitTests/UnitTests.pro
           cat Makefile.Debug
           make
           ./unit_test.exe
