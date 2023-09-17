@@ -96,9 +96,7 @@ std::vector<MP> DbManager::getAllMps()
 {
     std::vector<MP> allMps;
     qDebug() << "Persons in db:";
-    //QSqlQuery query("SELECT * FROM mps");
     QSqlQuery query("SELECT mps.*, finances.* FROM mps LEFT JOIN Finances ON mps.name = Finances.mp_name;");
-    int idName = query.record().indexOf("name");
     while (query.next())
     {
         QStringList cd = query.value(8).toString().split("|");
@@ -129,7 +127,6 @@ std::vector<MP> DbManager::getAllMpsFromParty(const QString& party)
 {
     std::vector<MP> allMps;
     qDebug() << "Persons in db:";
-    //QSqlQuery query("SELECT * FROM mps");
     QSqlQuery query;
     query.prepare("SELECT mps.*, finances.* FROM mps LEFT JOIN Finances ON mps.name = Finances.mp_name WHERE mps.party = ?;");
     query.bindValue(0, party);
@@ -144,7 +141,6 @@ std::vector<MP> DbManager::getAllMpsFromParty(const QString& party)
         qDebug() << "Error executing query:" << query.lastError().text();
     }
 
-    int idName = query.record().indexOf("name");
     while (query.next())
     {
         QStringList cd = query.value(8).toString().split("|");
@@ -175,7 +171,6 @@ std::vector<MP> DbManager::getAllMpsFromParty(const QString& party)
 MP DbManager::getMpFromName(const QString& name)
 {
     QSqlQuery query;
-    //query.prepare("SELECT * FROM mps WHERE name = ?");
     query.prepare("SELECT mps.*, finances.* FROM mps LEFT JOIN Finances ON mps.name = Finances.mp_name WHERE mps.name = ?;");
     query.bindValue(0, name);
 
