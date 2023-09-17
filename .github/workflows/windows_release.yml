@@ -28,7 +28,7 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Install Qt
+      - name: (1.5) Install Qt
         uses: jurplel/install-qt-action@v3.3.0
             
 
@@ -36,6 +36,7 @@ jobs:
         working-directory:  ${{ github.workspace }}
         run: |
           git fetch --all --tags -f
+          
       - name: (3) Install Qt
         uses: jurplel/install-qt-action@v2
         with:
