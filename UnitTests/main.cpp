@@ -1,5 +1,5 @@
 //#include <QCoreApplication>
-#include <QDebug>
+//#include <QDebug>
 #include <QString>
 #include <stdio.h>
 #include "../qtGuiApplication/dbmanager.h"
