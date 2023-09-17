@@ -113,8 +113,8 @@ jobs:
           
           qmake UnitTests/UnitTests.pro
           cat Makefile.Debug
-          make
-          ./unit_test.exe
+          nmake
+          .\debug\unit_test.exe
           
       - name: Generate Report
         id: generate_test_report
