@@ -37,3 +37,7 @@
 ## Trello
 [![Task manager](https://img.shields.io/badge/Task_manager-Trello-red.svg)](https://trello.com/b/0s8Y3Pmd/cosc345)
 
+## Discord
+
+[![Screenshot of Discord](https://cdn.discordapp.com/attachments/1152954299303862283/1152954328823378142/image.png)]
+
