@@ -107,14 +107,13 @@ jobs:
 
       - name: Compile tests and generate code coverage
         working-directory: ${{ github.workspace }}
-        shell: cmd
         run: |
           dir
           
           qmake UnitTests/UnitTests.pro
           cat Makefile.Debug
-          nmake
-          .\debug\unit_test.exe
+          make
+          ./unit_test.exe
           
       - name: Generate Report
         id: generate_test_report
