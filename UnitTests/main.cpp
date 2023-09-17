@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include "../qtGuiApplication/dbmanager.h"
 #include "../qtGuiApplication/mp.h"
-#include "include/QtGui/QApplication"
+//#include "include/QtGui/QApplication"
 #include "include/QtWidgets/QWidget"
 
 int another(int param)
