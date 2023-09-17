@@ -1,5 +1,11 @@
+#include <QCoreApplication>
+#include <QDebug>
+#include <QString>
 #include <stdio.h>
 #include "../qtGuiApplication/dbmanager.h"
+#include "../qtGuiApplication/mp.h"
+#include "include/QtGui/QApplication"
+#include "include/QtWidgets/QWidget"
 
 int another(int param)
 {
@@ -51,20 +57,21 @@ bool test_get_all_mps()
 
     DbManager db(path);
 
-    std::vector<MP> all_mps = db.getAllMps()
+    std::vector<MP> all_mps = db.getAllMps();
 
-                                  std::vector<QString>
-                                      names = {"Kiritapu Allan", "Ginny Andersen", "Chris Baillie"};
+    std::vector<QString> names = {"Kiritapu Allan", "Ginny Andersen", "Chris Baillie"};
 
     for (unsigned int i = 0; i < 3; i++)
     {
         if (all_mps[i].getName() != names[i])
         {
+            printf("what");
             return false;
         }
     }
     return true;
 }
+
 
 int main(int argc, char *argv[])
 {
@@ -75,9 +82,9 @@ int main(int argc, char *argv[])
     another(0);
     puts("main fin");
 
-    printf("MP name test: %d", test_mp_name());
-    printf("MP special character test: %d", test_mp_name_special());
-    printf("Get all mps: %d", test_get_all_mps());
+    printf("MP name test: %d\n", test_mp_name());
+    printf("MP special character test: %d\n", test_mp_name_special());
+    printf("Get all mps: %d\n", test_get_all_mps());
 
     return 0;
 }

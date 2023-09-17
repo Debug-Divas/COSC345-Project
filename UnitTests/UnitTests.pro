@@ -1,5 +1,3 @@
-include(gtest_dependency.pri)
-
 TEMPLATE = app
 TARGET = UnitTests
 
@@ -16,7 +14,6 @@ INCLUDEPATH += \
 
 SOURCES += \
         main.cpp \
-        tst_getmpfromname.cpp \
         ../qtGuiApplication/dbmanager.cpp \
         ../qtGuiApplication/finances.cpp \
         ../qtGuiApplication/mp.cpp
@@ -27,3 +24,6 @@ HEADERS += \
         ../qtGuiApplication/mp.h
 
 
+qnx: target.path = /tmp/$${TARGET}/bin
+else: unix:!android: target.path = /opt/$${TARGET}/bin
+!isEmpty(target.path): INSTALLS += target
