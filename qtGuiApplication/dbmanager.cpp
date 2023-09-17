@@ -11,6 +11,9 @@
 
 #include "mp.h"
 #include "finances.h"
+#include "debate.h"
+#include "speech.h"
+#include "speechcontent.h"
 
 DbManager::DbManager(const QString& path)
 {
@@ -208,6 +211,58 @@ MP DbManager::getMpFromName(const QString& name)
     }
 }
 
+std::vector<Speech> DbManager::getSpeechFromName(const QString& name)
+{
+    QSqlQuery query;
+    query.prepare("SELECT speechContent.*, speech.*, debate.* FROM speech Left JOIN speechContent ON speechContent.speech_time = speech.date_time LEFT JOIN debate on debate.datetime = speech.debate_time WHERE speechContent.name = ?;");
+
+    query.bindValue(0, name);
+
+    if (query.exec()) {
+        // Query executed successfully
+        qDebug() << "Query executed successfully";
+    }
+    else {
+        // Error occurred during query execution
+        qDebug() << "Error executing query:" << query.lastError().text();
+    }
+
+    QString currentSpeechTime = "";
+    Speech currentSpeech = Speech();
+    std::vector<Speech> speeches;
+    std::vector<Speechcontent> contents;
+
+
+    while (query.next())
+    {
+        if(currentSpeechTime == query.value(4).toString()){
+
+
+        }
+        Debate debate = Debate(query.value(8).toString(), query.value(9).toString(), query.value(10).toString());
+        Speechcontent contents = Speechcontent(query.value(0).toInt(), query.value(1).toString(), query.value(2).toString(), query.value(4).toString(), query.value(3).toString());
+        //Speech speech = Speech(query.value(5).toString(), query.value(6).toString(), query.value(7).toString(), debate, contents);
+
+        qDebug() << query.value(0);
+        qDebug() << query.value(1);
+        qDebug() << query.value(2);
+        qDebug() << query.value(3);
+        qDebug() << query.value(4);
+        qDebug() << query.value(5);
+        qDebug() << query.value(6);
+        qDebug() << query.value(7);
+        qDebug() << query.value(8);
+        qDebug() << query.value(9);
+        qDebug() << query.value(10);
+        qDebug() << query.value(11);
+
+
+
+    }
+
+    return speeches;
+}
+
 std::vector<Finances> DbManager::getAllFinances()
 {
     std::vector<Finances> allFinances;
@@ -381,7 +436,25 @@ bool DbManager::createSpeechContentTable()
 
     while (!in.atEnd()) {
         QString line = in.readLine();
-        QStringList fields = line.split(",");
+        qDebug() << line;
+        QStringList fields;
+        if(line.contains('"')){
+            QStringList fields1 = line.split('"');
+            fields.append(fields1[0].split(","));
+            fields.pop_back();
+            fields1.pop_front();
+            fields.append(fields1[fields1.size()-1].split(",")[1]);
+            fields1.pop_back();
+            QString text = "";
+            for (int i = 0; i < fields1.size(); i++){
+                text += fields1[i];
+            }
+            fields.insert(3, text);
+
+        }else{
+            fields = line.split(",");
+        }
+
 
         for (int i = 0; i < 5; i++) {
             query.addBindValue(fields[i]);

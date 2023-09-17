@@ -22,6 +22,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     card.cpp \
     dbmanager.cpp \
+    debate.cpp \
     dialog.cpp \
     expandedcard.cpp \
     main.cpp \
@@ -32,11 +33,14 @@ SOURCES += \
     partyact.cpp \
     partygreen.cpp \
     partymaori.cpp \
-    partynational.cpp
+    partynational.cpp \
+    speech.cpp \
+    speechcontent.cpp
 
 HEADERS += \
     card.h \
     dbmanager.h \
+    debate.h \
     dialog.h \
     expandedcard.h \
     mainwindow.h \
@@ -46,7 +50,9 @@ HEADERS += \
     partyact.h \
     partygreen.h \
     partymaori.h \
-    partynational.h
+    partynational.h \
+    speech.h \
+    speechcontent.h
 
 FORMS += \
     card.ui \

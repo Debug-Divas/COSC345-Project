@@ -5,6 +5,10 @@
 
 #include "mp.h"
 #include "finances.h"
+#include "dbmanager.h"
+#include "speech.h"
+#include "debate.h"
+#include "speechcontent.h"
 
 ExpandedCard::ExpandedCard(QWidget *parent) : QDialog(parent), ui(new Ui::ExpandedCard)
 {
@@ -49,7 +53,11 @@ void ExpandedCard::on_okButton_accepted()
 
 void ExpandedCard::on_TranscriptsButton_clicked()
 {
+    QString path = "parliament.db";
     qDebug() << "Transcripts Button clicked";
+    DbManager db(path);
+    std::vector<Speech> speeches = db.getSpeechFromName(mp.getName());
+
     ui->page_contents->setText("transcripts");
 }
 

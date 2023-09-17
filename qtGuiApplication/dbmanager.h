@@ -3,6 +3,7 @@
 #include <QSqlDatabase>
 #include "mp.h"
 #include "finances.h"
+#include "speech.h"
 
 class DbManager
 {
@@ -23,6 +24,8 @@ public:
     MP getMpFromName(const QString &name);
 
     std::vector<Finances> getAllFinances();
+
+    std::vector<Speech> getSpeechFromName(const QString& name);
 
     bool createFinancialInterestsTable();
 
