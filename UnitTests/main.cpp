@@ -1,6 +1,6 @@
 //#include <QCoreApplication>
 //#include <QDebug>
-#include <QString>
+//#include <QString>
 #include <stdio.h>
 #include "../qtGuiApplication/dbmanager.h"
 #include "../qtGuiApplication/mp.h"
