@@ -109,10 +109,8 @@ jobs:
         shell: cmd
         run: |
           dir
-          cd qtGuiApplication
-          qmake cardTest.pro
-          cd ..
           cd UnitTests
+          qmake UnitTests.pro
           make
           main.exe
           
