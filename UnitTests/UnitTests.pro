@@ -5,11 +5,10 @@ QT += core
 QT += gui 
 QT += sql
 
-TEMPLATE = app
 CONFIG += console c++11 debug
 CONFIG -= app_bundle
 CONFIG += thread
-#CONFIG -= qt
+# CONFIG -= qt
 
 INCLUDEPATH += \
     ../qtGuiApplication
@@ -24,7 +23,6 @@ HEADERS += \
         ../qtGuiApplication/dbmanager.h \
         ../qtGuiApplication/finances.h \
         ../qtGuiApplication/mp.h
-
 
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
