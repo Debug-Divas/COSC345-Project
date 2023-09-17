@@ -11,6 +11,8 @@
 ## Reports
 -   [Assignment 1 - Report.pdf](https://github.com/Debug-Divas/COSC345-Project/blob/main/Assignment%201%20-%20Report.pdf)
 
+-   [Retrospective](https://github.com/Debug-Divas/COSC345-Project/blob/a8f4f831a3b4ec6060aab7e8cfc9dbcb1ba77f7c/Retrospective%20-%20Debug%20Diva.pdf)
+
 ## How To Run
 -   In the COSC345-Project Repository, go to Actions
 -   On the left side-bar click on Windows Release then click on the latest passed workflow run
