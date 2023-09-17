@@ -20,6 +20,12 @@
 -   Extract the downloaded zip file twice. Navigate to the `release` folder inside the newly extracted folder using the terminal
 -   Run the command `./sqlite_qt.exe`
 
+## Static Analysis Report
+
+Of the 34 total issues with the code base, 32 of these issues are code style such as unused variable names and inconsistent applications of camel case, and 28 of the 32 originate from the web scraping code and other files that are not directly related to the main app itself. Because of this, we felt comfortable in prioritizing other more important work over rectifying these issues as they have no real effect on how the app runs and behaves.
+
+Our continuous integration pipeline generates a makefile for our unit test program in order to get a code coverage report. However, the makefile appears to generate with faulty formatting that cannot be fixed manually because the file generates dynamically each time the Github actions workflow is activated (every time we push to main). Because of this, the CI pipeline fails mere lines before it can generate the code coverage, and with only a little guidance we have been unable to rectify this.
+
 ## Doxygen
 [![Documentation](https://img.shields.io/badge/Documentation-Doxygen-blue.svg)](https://debug-divas.github.io/COSC345-Project/)
 
