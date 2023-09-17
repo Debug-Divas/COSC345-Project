@@ -65,6 +65,18 @@ jobs:
         with:
           arch: x64
 
+      - name: Copy Qt Headers to UnitTests
+        run: |
+          QT_HEADERS_SOURCE="${{ runner.temp }}/qt/include"
+          UNIT_TESTS_DIR="${{ github.workspace }}/UnitTests"
+          
+          mkdir -p "${UNIT_TESTS_DIR}/include"
+          
+          cp -r "${QT_HEADERS_SOURCE}/QtCore" "${UNIT_TESTS_DIR}/include/"
+          cp -r "${QT_HEADERS_SOURCE}/QtGui" "${UNIT_TESTS_DIR}/include/"
+        working-directory: ${{ runner.temp }}
+
+
       - name: (8) Build
         working-directory: ${{ runner.temp }}
         run: |
@@ -85,6 +97,13 @@ jobs:
           copy C:\Windows\System32\vccorlib140.dll .
           copy C:\Windows\System32\msvcp140.dll .
           copy C:\Windows\System32\vcruntime140.dll .
+
+      - name: Build UnitTests/main.cpp
+        run: |
+          cd ${{ env.SOURCE_DIR }}/UnitTests
+          qmake -r
+          nmake
+        working-directory: ${{ github.workspace }}
 
       - name: (9) Zip build
         working-directory: ${{ runner.temp }}
