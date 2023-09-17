@@ -4,6 +4,7 @@ TARGET = UnitTests
 QT += core
 QT += gui 
 QT += sql
+QT += widgets
 
 CONFIG += console c++11 debug
 CONFIG -= app_bundle
