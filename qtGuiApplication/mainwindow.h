@@ -1,7 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-//#include <QMainWindow>
+#include <QMainWindow>
 #include <vector> // Include the <vector> header
 
 // Include necessary headers for your classes here
