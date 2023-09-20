@@ -209,7 +209,7 @@ MP DbManager::getMpFromName(const QString& name)
 std::vector<Speech> DbManager::getSpeechFromName(const QString& name)
 {
     QSqlQuery query;
-    query.prepare("SELECT speechContent.*, speech.*, debate.* FROM speech Left JOIN speechContent ON speechContent.speech_time = speech.date_time LEFT JOIN debate on debate.datetime = speech.debate_time WHERE speechContent.name = ?;");
+    query.prepare("SELECT speechContent.*, speech.* FROM speechcontent JOIN speech ON speechContent.speech_time = speech.date_time WHERE speechContent.name = ?;");
 
     query.bindValue(0, name);
 
@@ -225,18 +225,31 @@ std::vector<Speech> DbManager::getSpeechFromName(const QString& name)
     QString currentSpeechTime = "";
     Speech currentSpeech = Speech();
     std::vector<Speech> speeches;
-    std::vector<Speechcontent> contents;
+
 
 
     while (query.next())
     {
-        if(currentSpeechTime == query.value(4).toString()){
+        QString speechContent_speechtime = query.value(4).toString();
 
-
+        bool speech_exists = false;
+        for (int i = 0; i < speeches.size(); i++) {
+            if (speeches[i].getTime() == speechContent_speechtime) {
+                Speechcontent content = Speechcontent(query.value(0).toInt(), query.value(1).toString(), query.value(2).toString(), query.value(4).toString(), query.value(3).toString());
+                speeches[i].addContent(content);
+                speech_exists = true;
+            }
         }
-        Debate debate = Debate(query.value(8).toString(), query.value(9).toString(), query.value(10).toString());
-        Speechcontent contents = Speechcontent(query.value(0).toInt(), query.value(1).toString(), query.value(2).toString(), query.value(4).toString(), query.value(3).toString());
-        //Speech speech = Speech(query.value(5).toString(), query.value(6).toString(), query.value(7).toString(), debate, contents);
+
+        if(speech_exists == false){
+            Debate debate = Debate();
+            std::vector<Speechcontent> contents;
+            Speechcontent content = Speechcontent(query.value(0).toInt(), query.value(1).toString(), query.value(2).toString(), query.value(4).toString(), query.value(3).toString());
+            contents.push_back(content);
+            Speech speech = Speech(query.value(6).toString(), query.value(5).toString(), query.value(7).toString(), debate, contents);
+            speeches.push_back(speech);
+        }
+
 
         qDebug() << query.value(0);
         qDebug() << query.value(1);
@@ -250,8 +263,6 @@ std::vector<Speech> DbManager::getSpeechFromName(const QString& name)
         qDebug() << query.value(9);
         qDebug() << query.value(10);
         qDebug() << query.value(11);
-
-
 
     }
 
@@ -406,12 +417,12 @@ bool DbManager::createSpeechContentTable()
     query.prepare("DROP Table speechContent");
     query.exec();
 
-    query.prepare("CREATE TABLE speechContent(speechID Int PRIMARY KEY, type VARCHAR(10), name VARCHAR(50), text VARCHAR(1000), speech_time DATETIME);");
+    query.prepare("CREATE TABLE speechContent(speechID INTEGER PRIMARY KEY AUTOINCREMENT, type VARCHAR(10), name VARCHAR(50), text VARCHAR(1000), speech_time DATETIME);");
 
     if (!query.exec())
     {
         qDebug() << "Couldn't create the table 'speechContent': one might already exist.";
-        return false;
+       return false;
     }
 
     QFile file("../web-scrapers/transcripts-scraper/speechContent.csv");
@@ -427,7 +438,7 @@ bool DbManager::createSpeechContentTable()
         in.readLine();
     }
 
-    query.prepare("INSERT INTO speechContent (speechID, type, name, text, speech_time) VALUES (?, ?, ?, ?, ?)");
+    query.prepare("INSERT INTO speechContent (type, name, text, speech_time) VALUES (?, ?, ?, ?)");
 
     while (!in.atEnd()) {
         QString line = in.readLine();
@@ -451,7 +462,7 @@ bool DbManager::createSpeechContentTable()
         }
 
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 4; i++) {
             query.addBindValue(fields[i]);
         }
 

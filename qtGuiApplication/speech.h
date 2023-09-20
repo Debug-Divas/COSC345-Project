@@ -19,6 +19,7 @@ public:
     QString getDebateTime() const;
     Debate getDebate() const;
     std::vector<Speechcontent> getContents() const;
+    void addContent(Speechcontent content);
 
 private:
     QString time;

@@ -211,8 +211,6 @@ def get_debates_from_url(url):
                         s = parseIntervention(para)
                         currentSpeech.content.append(s)
 
-
-
     for debate in debates:
         new_speeches = []
         for s in range(len(debate.speeches)):

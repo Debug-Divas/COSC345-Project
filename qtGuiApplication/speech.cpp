@@ -38,4 +38,9 @@ std::vector<Speechcontent> Speech::getContents() const
     return contents;
 }
 
+void Speech::addContent(Speechcontent content)
+{
+    contents.push_back(content);
+}
+
 
