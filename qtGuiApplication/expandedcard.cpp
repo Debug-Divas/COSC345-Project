@@ -58,7 +58,20 @@ void ExpandedCard::on_TranscriptsButton_clicked()
     DbManager db(path);
     std::vector<Speech> speeches = db.getSpeechFromName(mp.getName());
 
-    ui->page_contents->setText("transcripts");
+    QString text = "";
+
+    for(int i = 0; i < speeches.size(); i++){
+        text +=  "Speech by: <b>" + speeches[i].getName() + "</b> at <b>" + speeches[i].getTime() + "</b><br>";
+        for (int c = 0; c < speeches[i].getContents().size(); c++){
+            if(speeches[i].getContents()[c].getType() == "Interjection"){
+                text += "<b>Interjection:</b> ";
+            }
+            text += speeches[i].getContents()[c].getText() + "<br>";
+        }
+        text += "<br>";
+    }
+
+    ui->page_contents->setText(text);
 }
 
 
