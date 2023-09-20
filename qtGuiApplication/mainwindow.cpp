@@ -131,7 +131,29 @@ void MainWindow::clearCardsLayout()
         delete item;
     }
 }
+bool findSpecialChar(QString str){
+    QString strComp = "àáâãäåāæçèéêëēīìíîïðñòóôõöō÷øùúûüūýþÿ";
+        for(size_t i = 0; i < str.size(); ++i){
+            if(strComp.contains(str[i].toLower())){
+                return true;
+            }
+        }
+    return false;
+}
 
+QString replaceSpecialChar(QString str){
+    QString strA = "àáâãäā";
+    QString strE = "èéêëēe";
+    QString strI = "īìíîïi";
+    QString strO = "òóôõöō";
+    QString strU = "ùúûüūu";
+        for(size_t i = 0; i < strA.size();i++){
+            str.replace(strA[i],"a").replace(strE[i],"e").replace(strU[i],"u");
+            str.replace(strO[i],"o").replace("ç","c").replace(strI[i],"i");
+        }
+    return str;
+
+}
 void MainWindow::on_filterButton_clicked()
 {
     QString searchQuery = ui->searchQuery->text();
@@ -156,9 +178,20 @@ void MainWindow::on_filterButton_clicked()
             std::vector<MP> filteredMps;
             if (!searchQuery.isEmpty()) {
                 showMpsOnScreen(mps);
+                bool specialChar = false;
+                QString compString;
+                if(findSpecialChar(searchQuery)){
+                    specialChar = true;
+                }
                 for (size_t i = 0; i < mps.size(); ++i) {
-                    if (mps[i].getName().replace("ā","a").replace("é","e").replace("ö","o").toUpper().contains(searchQuery.toUpper())) {
-                        qDebug() << mps[i].getName().toUpper();
+                    if(specialChar){
+                        compString = mps[i].getName().toLower();
+                    }
+                    else{
+
+                        compString= replaceSpecialChar(mps[i].getName().toLower());
+                    }
+                    if (compString.contains(searchQuery.toLower())) {
                         filteredMps.push_back(mps[i]);
                     }
                     else if (mps[i].getParty().contains(searchQuery)) {
@@ -175,7 +208,6 @@ void MainWindow::on_filterButton_clicked()
             }
             std::vector<MP> typeFilter;
             if(typeMP == "All"){
-                qDebug() << "Im here";
                 showMpsOnScreen(filteredMps);
             }
             else{
@@ -207,6 +239,8 @@ void MainWindow::on_filterButton_clicked()
         qDebug() << "Couldn't open mps";
     }
 }
+
+
 void MainWindow::on_partiesButton_clicked()
 {
     clearCardsLayout();
