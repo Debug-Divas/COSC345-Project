@@ -159,6 +159,7 @@ void MainWindow::on_filterButton_clicked()
     QString searchQuery = ui->searchQuery->text();
     QString partyQuery = ui->partyQuery->currentText();
     QString typeMP = ui->typeMP->currentText();
+    QString electorades = ui ->electorates ->currentText();
     qDebug() << searchQuery << " " << partyQuery << " " << typeMP;
 
     DbManager db(path);
@@ -166,13 +167,26 @@ void MainWindow::on_filterButton_clicked()
 
     if (db.isOpen())
     {
+
         if (partyQuery == "All") {
             mps = db.getAllMps();
         }
         else {
             mps = db.getAllMpsFromParty(partyQuery);
         }
+        if(electorades == "All"){
 
+        }
+        else{
+            std::vector<MP> temp;
+            for(size_t i=0; i<mps.size();i++){
+                if(mps[i].getElectorate() == electorades){
+                    temp.push_back(mps[i]);
+                    break;
+                }
+            }
+            mps = temp;
+        }
         if (!mps.empty())
         {
             std::vector<MP> filteredMps;
@@ -231,6 +245,7 @@ void MainWindow::on_filterButton_clicked()
             }
         }
         else {
+            showMpsOnScreen(mps);
             qDebug() << "No mps found";
         }
     }

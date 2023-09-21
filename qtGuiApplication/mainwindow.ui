@@ -288,6 +288,395 @@
          </widget>
         </item>
         <item>
+         <widget class="QFrame" name="frame_6">
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_8">
+           <item>
+            <widget class="QLabel" name="label_4">
+             <property name="maximumSize">
+              <size>
+               <width>1200000</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Electorates:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="electorates">
+             <item>
+              <property name="text">
+               <string>All</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Auckland Central</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Banks Peninsula</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Bay of Plenty</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Botany</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Coromandel</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Christchurch East </string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Christchurch Central</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Dunedin</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>East Coast</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>East Coast Bays</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Epsom</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Hamilton East</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Hamilton West</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Hauraki-Waikato</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Hutt South</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Ikaroa-Rawhiti</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Ilam</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Invercargill</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Kaikoura</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Kaipara ki Mahurangi</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Kelston</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Mana</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Mangere</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Manurewa</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Maungakiekie</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Mt Roskill</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Napier</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Nelson</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Northcote</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Northland</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>North Shore</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>New Lynn</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>New Plymouth</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Ohariu</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Otaki</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Pakuranga</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Palmerston North</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Panmure-Ōtāhuhu</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Papakura</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Port Waikato</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Rangitata</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Rangitikei</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Remutaka</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Rongotai</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Rotorua</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Selwyn</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Southland</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Taieri</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Takanini</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Tamaki</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Tamaki Makaurau</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Taranaki-King Country</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Taupo</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Tauranga</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Te Atatu</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Te Tai Hauauru</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Te Tai Tokerau</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Te Tai Tonga</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Tukituki</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Upper Harbour</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Waiariki</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Waikato</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Waimakariri</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Wairarapa</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Waitaki</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Wellington Central</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>West Coast-Tasman</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Whanganui</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Whangārei</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Whangaparāoa</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Wigram</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
          <widget class="QPushButton" name="filterButton">
           <property name="text">
            <string>Filter</string>
