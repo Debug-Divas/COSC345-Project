@@ -343,12 +343,12 @@
              </item>
              <item>
               <property name="text">
-               <string>Christchurch East </string>
+               <string>Christchurch Central</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>Christchurch Central</string>
+               <string>Christchurch East </string>
               </property>
              </item>
              <item>
@@ -658,12 +658,12 @@
              </item>
              <item>
               <property name="text">
-               <string>Whangārei</string>
+               <string>Whangaparāoa</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>Whangaparāoa</string>
+               <string>Whangārei</string>
               </property>
              </item>
              <item>
