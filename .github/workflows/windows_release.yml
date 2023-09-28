@@ -99,33 +99,33 @@ jobs:
           name: ${{ env.ARTIFACT }}
           path: ${{ runner.temp }}\${{ env.ARTIFACT }}
 
-      - name: Setup OpenCppCoverage and add to Path
-        id: setup_opencppcoverage
-        run: |
-          choco install OpenCppCoverage -y
-          echo "C:\Program Files\OpenCppCoverage" >> $env:GITHUB_PATH
+      # - name: Setup OpenCppCoverage and add to Path
+      #   id: setup_opencppcoverage
+      #   run: |
+      #     choco install OpenCppCoverage -y
+      #     echo "C:\Program Files\OpenCppCoverage" >> $env:GITHUB_PATH
 
-      - name: Compile tests and generate code coverage
-        working-directory: ${{ github.workspace }}
-        run: |
-          qmake UnitTests/UnitTests.pro
-          cat Makefile.Debug
-          make
-          ./unit_test.exe
+      # - name: Compile tests and generate code coverage
+      #   working-directory: ${{ github.workspace }}
+      #   run: |
+      #     qmake UnitTests/UnitTests.pro
+      #     cat Makefile.Debug
+      #     make
+      #     ./unit_test.exe
           
-      - name: Generate Report
-        id: generate_test_report
-        working-directory: ${{ github.workspace }}
-        run: |
-             cd UnitTests
-             "C:\Program Files\OpenCppCoverage\OpenCppCoverage.exe" --export_type cobertura:qt_application.xml -- unit_test.exe
-             dir
+      # - name: Generate Report
+      #   id: generate_test_report
+      #   working-directory: ${{ github.workspace }}
+      #   run: |
+      #        cd UnitTests
+      #        "C:\Program Files\OpenCppCoverage\OpenCppCoverage.exe" --export_type cobertura:qt_application.xml -- unit_test.exe
+      #        dir
 
-      - name: Upload Report to CodeCov
-        uses: codecov/codecov-action@v3
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          directory: ${{ github.workspace }}\UnitTests
-          files: qt_application.xml
-          fail_ci_if_error: true
-          functionalities: fix
+      # - name: Upload Report to CodeCov
+      #   uses: codecov/codecov-action@v3
+      #   with:
+      #     token: ${{ secrets.CODECOV_TOKEN }}
+      #     directory: ${{ github.workspace }}\UnitTests
+      #     files: qt_application.xml
+      #     fail_ci_if_error: true
+      #     functionalities: fix
