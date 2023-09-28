@@ -4,6 +4,7 @@
 #include "mp.h"
 #include "finances.h"
 #include "speech.h"
+#include "vote.h"
 
 class DbManager
 {
@@ -26,6 +27,8 @@ public:
     std::vector<Finances> getAllFinances();
 
     std::vector<Speech> getSpeechFromName(const QString& name);
+
+    std::vector<Vote> getAllVotes();
 
     bool createFinancialInterestsTable();
 

@@ -35,7 +35,8 @@ SOURCES += \
     partymaori.cpp \
     partynational.cpp \
     speech.cpp \
-    speechcontent.cpp
+    speechcontent.cpp \
+    vote.cpp
 
 HEADERS += \
     card.h \
@@ -52,7 +53,8 @@ HEADERS += \
     partymaori.h \
     partynational.h \
     speech.h \
-    speechcontent.h
+    speechcontent.h \
+    vote.h
 
 FORMS += \
     card.ui \

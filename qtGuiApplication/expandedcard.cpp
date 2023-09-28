@@ -9,6 +9,7 @@
 #include "speech.h"
 #include "debate.h"
 #include "speechcontent.h"
+#include "vote.h"
 
 ExpandedCard::ExpandedCard(QWidget *parent) : QDialog(parent), ui(new Ui::ExpandedCard)
 {
@@ -87,8 +88,41 @@ void ExpandedCard::on_FinancesButton_clicked()
 void ExpandedCard::on_VotesButton_clicked()
 {
     qDebug() << "Votes Button clicked";
-    ui->page_contents->setText("votes");
 
+    QString path = "parliament.db";
+    DbManager db(path);
+    std::vector<Vote> votes = db.getAllVotes();
+
+    QString text = "";
+
+    for(int i = 0; i < votes.size(); i++){
+        qDebug() << votes[i].getVoteName();
+        QString vote = "";
+        QStringList ayes = votes[i].getAyes();
+        for(int a = 0; a < ayes.size(); a++){
+            if(ayes[a] == mp.getName()){
+                vote = "aye";
+                break;
+            }
+        }
+        if(vote == ""){
+            QStringList noes = votes[i].getNoes();
+            for(int n = 0; n < noes.size(); n++){
+                if(noes[n] == mp.getName()){
+                    vote = "no";
+                    break;
+                }
+            }
+        }
+        if(vote != ""){
+            text += votes[i].getVoteName();
+            text += "   -   <b>";
+            text += vote;
+            text += "</b><br><br>";
+        }
+    }
+
+    ui->page_contents->setText(text);
 }
 
 void ExpandedCard::Show_Financials(){

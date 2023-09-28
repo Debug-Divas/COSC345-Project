@@ -14,6 +14,7 @@
 #include "debate.h"
 #include "speech.h"
 #include "speechcontent.h"
+#include "vote.h"
 
 DbManager::DbManager(const QString& path)
 {
@@ -298,6 +299,22 @@ std::vector<Finances> DbManager::getAllFinances()
     return allFinances;
 }
 
+std::vector<Vote> DbManager::getAllVotes()
+{
+    std::vector<Vote> allVotes;
+    qDebug() << "Votes in db:";
+    QSqlQuery query("SELECT * FROM vote");
+    while (query.next())
+    {
+        QString ayes_string = query.value(2).toString();
+        QString noes_string = query.value(3).toString();
+        QStringList ayes = ayes_string.split("!");
+        QStringList noes = noes_string.split("!");
+        Vote vote = Vote(query.value(1).toString(), ayes, noes);
+        allVotes.push_back(vote);
+    }
+    return allVotes;
+}
 
 bool DbManager::createFinancialInterestsTable()
 {
