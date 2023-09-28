@@ -35,6 +35,8 @@ public:
 
     bool createDebateTable();
 
+    bool createVotesTable();
+
 private:
     QSqlDatabase m_db;
 };

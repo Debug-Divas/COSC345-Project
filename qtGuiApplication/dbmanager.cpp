@@ -522,3 +522,51 @@ bool DbManager::createDebateTable()
     file.close();
     return true;
 }
+
+bool DbManager::createVotesTable()
+{
+    QSqlQuery query;
+
+    query.prepare("DROP Table vote");
+    query.exec();
+
+    query.prepare("CREATE TABLE vote( ID INTEGER PRIMARY KEY AUTOINCREMENT, vote_name VARCHAR(100), ayes VARCHAR(500), noes VARCHAR(500));");
+
+    if (!query.exec())
+    {
+        qDebug() << "Couldn't create the table 'vote': one might already exist.";
+        return false;
+    }
+
+    QFile file("../web-scrapers/transcripts-scraper/votes.csv");
+    if (!file.open(QIODevice::ReadOnly)) {
+        qDebug() << file.errorString();
+        return false;
+    }
+
+    QTextStream in(&file);
+
+    // Read the first line to ignore the header
+    if (!in.atEnd()) {
+        in.readLine();
+    }
+
+    query.prepare("INSERT INTO vote (vote_name, ayes, noes) VALUES (?, ?, ?)");
+
+    while (!in.atEnd()) {
+        QString line = in.readLine();
+        QStringList fields = line.split(",");
+
+        query.addBindValue(fields[0]);
+        query.addBindValue(fields[1]);
+        query.addBindValue(fields[2]);
+
+        if (!query.exec()) {
+            qDebug() << "Error inserting data into table: " << query.lastError();
+            return false;
+        }
+    }
+
+    file.close();
+    return true;
+}
