@@ -101,7 +101,7 @@ void ExpandedCard::on_VotesButton_clicked()
         QStringList ayes = votes[i].getAyes();
         for(int a = 0; a < ayes.size(); a++){
             if(ayes[a] == mp.getName()){
-                vote = "aye";
+                vote = "for";
                 break;
             }
         }
@@ -109,7 +109,7 @@ void ExpandedCard::on_VotesButton_clicked()
             QStringList noes = votes[i].getNoes();
             for(int n = 0; n < noes.size(); n++){
                 if(noes[n] == mp.getName()){
-                    vote = "no";
+                    vote = "against";
                     break;
                 }
             }
