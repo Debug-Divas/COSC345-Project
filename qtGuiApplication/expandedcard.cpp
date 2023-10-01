@@ -35,7 +35,7 @@ ExpandedCard::ExpandedCard(MP mp) : ui(new Ui::ExpandedCard)
     connect(ui->okButton, &QDialogButtonBox::accepted, this, &ExpandedCard::on_okButton_accepted);
     connect(ui->okButton, &QDialogButtonBox::rejected, this, &ExpandedCard::deleteLater);
 
-    Show_Financials();
+    on_FinancesButton_clicked();
 }
 
 ExpandedCard::~ExpandedCard()
