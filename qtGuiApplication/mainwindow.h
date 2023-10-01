@@ -20,6 +20,8 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void setButtonHighlight(QPushButton *button);
+
 private:
     Ui::MainWindow *ui;
     std::vector<Card*> cards; // Use std::vector for managing Card pointers
