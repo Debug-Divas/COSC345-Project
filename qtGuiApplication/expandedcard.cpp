@@ -43,6 +43,17 @@ ExpandedCard::~ExpandedCard()
     delete ui;
 }
 
+void ExpandedCard::setButtonHighlight(QPushButton *button)
+{
+    // Remove any existing styles from all buttons
+    ui->FinancesButton->setStyleSheet("");
+    ui->TranscriptsButton->setStyleSheet("");
+    ui->VotesButton->setStyleSheet("");
+    // Apply the highlightedButton stylesheet to the specified button
+    button->setStyleSheet("background-color: lightblue;");
+}
+
+
 void ExpandedCard::on_okButton_accepted()
 {
     //Test1
@@ -73,6 +84,7 @@ void ExpandedCard::on_TranscriptsButton_clicked()
     }
 
     ui->page_contents->setText(text);
+    setButtonHighlight(ui->TranscriptsButton);
 }
 
 
@@ -81,7 +93,7 @@ void ExpandedCard::on_FinancesButton_clicked()
     qDebug() << "Finances Button clicked";
 
     Show_Financials();
-
+    setButtonHighlight(ui->FinancesButton);
 }
 
 
@@ -123,6 +135,7 @@ void ExpandedCard::on_VotesButton_clicked()
     }
 
     ui->page_contents->setText(text);
+    setButtonHighlight(ui->VotesButton);
 }
 
 void ExpandedCard::Show_Financials(){

@@ -27,6 +27,19 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
+
+void MainWindow::setButtonHighlight(QPushButton *button)
+{
+    // Remove any existing styles from all buttons
+    ui->peopleButton->setStyleSheet("");
+    ui->partiesButton->setStyleSheet("");
+    ui->electionStatsButton->setStyleSheet("");
+
+    // Apply the highlightedButton stylesheet to the specified button
+    button->setStyleSheet("background-color: lightblue;");
+}
+
 void MainWindow::handleExpandButtonClicked(MP mp)
 {
     Card *senderCard = qobject_cast<Card*>(sender());
@@ -62,6 +75,8 @@ void MainWindow::handleOkButtonClicked()
 
 void MainWindow::on_peopleButton_clicked()
 {
+
+    setButtonHighlight(ui->peopleButton);
     DbManager db(path);
     std::vector<MP> mps;
     removeParties();
@@ -82,6 +97,7 @@ void MainWindow::on_peopleButton_clicked()
     {
         qDebug() << "Couldn't open mps";
     }
+
 }
 
 void MainWindow::showMpsOnScreen(std::vector<MP> mps) {
@@ -258,6 +274,7 @@ void MainWindow::on_filterButton_clicked()
 
 void MainWindow::on_partiesButton_clicked()
 {
+    setButtonHighlight(ui->partiesButton);
     clearCardsLayout();
     ui->filterOptions->hide();
     ui->scrollArea->hide();
@@ -307,6 +324,7 @@ void MainWindow::removeParties()
 
 void MainWindow::on_electionStatsButton_clicked()
 {
+    setButtonHighlight(ui->electionStatsButton);
     // Clear the layout of a widget and delete its child widgets
     QLayout *layout = ui->frame_5->layout();
     if (layout) {

@@ -16,6 +16,7 @@ public:
     explicit ExpandedCard(QWidget *parent = nullptr);
     explicit ExpandedCard(MP mp);
     ~ExpandedCard();
+    void setButtonHighlight(QPushButton *button);
 private:
     Ui::ExpandedCard *ui;
     MP mp;
