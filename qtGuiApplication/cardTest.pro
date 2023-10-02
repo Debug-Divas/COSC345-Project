@@ -59,7 +59,7 @@ HEADERS += \
     vote.h
 
 FORMS += \
-    ElectionStatisticsSub.ui \
+    electionstatisticssub.ui \
     card.ui \
     dialog.ui \
     expandedcard.ui \

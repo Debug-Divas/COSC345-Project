@@ -30,7 +30,7 @@
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="Stats1">
         <property name="maximumSize">
          <size>
           <width>16777215</width>
@@ -43,14 +43,14 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_3">
+       <widget class="QPushButton" name="Stats2">
         <property name="text">
          <string>Stats2</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="Stats3">
         <property name="text">
          <string>Stats3</string>
         </property>
