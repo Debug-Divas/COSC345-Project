@@ -4,6 +4,7 @@
 #include "dialog.h"
 #include "expandedcard.h"
 #include "parties.h"
+#include "electionstatisticssub.h"
 #include <QDebug>
 #include <QBoxLayout>
 #include <dbmanager.h>
@@ -325,38 +326,51 @@ void MainWindow::removeParties()
 void MainWindow::on_electionStatsButton_clicked()
 {
     setButtonHighlight(ui->electionStatsButton);
-    // Clear the layout of a widget and delete its child widgets
-    QLayout *layout = ui->frame_5->layout();
-    if (layout) {
-        while (QLayoutItem* item = layout->takeAt(0)) {
-            if (QWidget* widget = item->widget()) {
-                delete widget;
+    clearCardsLayout();
+    ui->filterOptions->hide();
+    ui->scrollArea->hide();
+    electionStatisticsSub *electSub = new electionStatisticsSub;
+
+    // Create a QVBoxLayout for frame_5 if it doesn't have one
+    if (!ui->frame_5->layout()) {
+        QVBoxLayout* newLayout = new QVBoxLayout(ui->frame_5);
+        ui->frame_5->setLayout(newLayout);
+    }
+
+    QVBoxLayout* frameLayout = qobject_cast<QVBoxLayout*>(ui->frame_5->layout());
+    if (frameLayout) {
+        // Remove existing widgets from frameLayout
+        QLayoutItem* item;
+        while ((item = frameLayout->takeAt(0)) != nullptr) {
+            QWidget* widget = item->widget();
+            if (widget) {
+                widget->deleteLater();
             }
             delete item;
         }
-        delete layout;
-    }
-    ui->filterOptions->hide();
-    ui->scrollArea->hide();
+
+        // Add the Dialog to frameLayout
+        frameLayout->addWidget(electSub);
 
     // Create a QLabel to display the image
-    QLabel *imageLabel = new QLabel(ui->frame_5);
+//    QLabel *imageLabel = new QLabel(frameLayout);
 
-    // Load an image (replace "imagePath.png" with your image file's path)
-    QPixmap pixmap("../images/statistics.PNG");
+//    // Load an image (replace "imagePath.png" with your image file's path)
+//    QPixmap pixmap("../images/statistics.PNG");
 
-    if (!pixmap.isNull()) {
-        // Set the image in the QLabel
-        QPixmap resizedPixmap = pixmap.scaled(1180, 520, Qt::KeepAspectRatio);
-        imageLabel->setPixmap(pixmap);
-        imageLabel->setScaledContents(true); // Optionally, scale the image to fit the QLabel
-        imageLabel->show();
+//    if (!pixmap.isNull()) {
+//        // Set the image in the QLabel
+//        QPixmap resizedPixmap = pixmap.scaled(1180, 520, Qt::KeepAspectRatio);
+//        imageLabel->setPixmap(pixmap);
+//        imageLabel->setScaledContents(true); // Optionally, scale the image to fit the QLabel
+//        imageLabel->show();
 
-        // Create a QVBoxLayout for ui->frame_5 and add the QLabel to it
-        QVBoxLayout* frameLayout = new QVBoxLayout(ui->frame_5);
-        frameLayout->addWidget(imageLabel);
-        ui->frame_5->setLayout(frameLayout);
-    } else {
-        qDebug() << "Failed to load the image.";
-    }
+//        // Create a QVBoxLayout for ui->frame_5 and add the QLabel to it
+//        QVBoxLayout* frameLayout = new QVBoxLayout(ui->frame_5);
+//        frameLayout->addWidget(imageLabel);
+//        ui->frame_5->setLayout(frameLayout);
+//    } else {
+//        qDebug() << "Failed to load the image.";
+//    }
+}
 }

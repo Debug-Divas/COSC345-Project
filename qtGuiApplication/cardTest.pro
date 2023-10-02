@@ -24,6 +24,7 @@ SOURCES += \
     dbmanager.cpp \
     debate.cpp \
     dialog.cpp \
+    electionstatisticssub.cpp \
     expandedcard.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -43,6 +44,7 @@ HEADERS += \
     dbmanager.h \
     debate.h \
     dialog.h \
+    electionstatisticssub.h \
     expandedcard.h \
     mainwindow.h \
     mp.h \
@@ -57,6 +59,7 @@ HEADERS += \
     vote.h
 
 FORMS += \
+    ElectionStatisticsSub.ui \
     card.ui \
     dialog.ui \
     expandedcard.ui \
