@@ -105,6 +105,12 @@ void MainWindow::on_peopleButton_clicked()
 void MainWindow::showMpsOnScreen(std::vector<MP> mps) {
     clearCardsLayout();
 
+    if(mps.empty()){
+        EmptyCard *emptyCard = new EmptyCard;
+        ui->CardsLayout->addWidget(emptyCard);
+        qDebug() << "No mps found";
+    }
+
     int maxColumns = 3; // Maximum number of cards per row
     int currentColumn = 0;
     int currentRow = 0;
@@ -263,11 +269,7 @@ void MainWindow::on_filterButton_clicked()
             }
         }
         else {
-//            showMpsOnScreen(mps);
-            clearCardsLayout();
-            EmptyCard *emptyCard = new EmptyCard;
-            ui->CardsLayout->addWidget(emptyCard);
-            qDebug() << "No mps found";
+            showMpsOnScreen(mps);
         }
     }
     else
