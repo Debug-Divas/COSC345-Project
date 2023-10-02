@@ -31,6 +31,17 @@ void electionStatisticsSub::clearImageDisplay()
     }
 }
 
+void electionStatisticsSub::setButtonHighlight(QPushButton *button)
+{
+    // Remove any existing styles from all buttons
+    ui->Stats1->setStyleSheet("");
+    ui->Stats2->setStyleSheet("");
+    ui->Stats3->setStyleSheet("");
+    // Apply the highlightedButton stylesheet to the specified button
+    button->setStyleSheet("background-color: lightblue;");
+}
+
+
 void electionStatisticsSub::on_Stats1_clicked()
 {
     // Clear the frame first
@@ -48,6 +59,7 @@ void electionStatisticsSub::on_Stats1_clicked()
 
     // Add the imageLabel to the layout
     layout->addWidget(imageLabel);
+    setButtonHighlight(ui->Stats1);
 }
 
 void electionStatisticsSub::on_Stats2_clicked()
@@ -67,6 +79,7 @@ void electionStatisticsSub::on_Stats2_clicked()
 
     // Add the imageLabel to the layout
     layout->addWidget(imageLabel);
+    setButtonHighlight(ui->Stats2);
 }
 
 void electionStatisticsSub::on_Stats3_clicked()
@@ -86,4 +99,5 @@ void electionStatisticsSub::on_Stats3_clicked()
 
     // Add the imageLabel to the layout
     layout->addWidget(imageLabel);
+    setButtonHighlight(ui->Stats3);
 }

@@ -14,6 +14,7 @@ class electionStatisticsSub : public QDialog
 public:
     explicit electionStatisticsSub(QWidget *parent = nullptr);
     ~electionStatisticsSub();
+    void setButtonHighlight(QPushButton *button);
 
 private slots:
     void on_Stats1_clicked();

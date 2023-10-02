@@ -5,6 +5,7 @@
 #include "expandedcard.h"
 #include "parties.h"
 #include "electionstatisticssub.h"
+#include "emptycard.h"
 #include <QDebug>
 #include <QBoxLayout>
 #include <dbmanager.h>
@@ -262,12 +263,18 @@ void MainWindow::on_filterButton_clicked()
             }
         }
         else {
-            showMpsOnScreen(mps);
+//            showMpsOnScreen(mps);
+            clearCardsLayout();
+            EmptyCard *emptyCard = new EmptyCard;
+            ui->CardsLayout->addWidget(emptyCard);
             qDebug() << "No mps found";
         }
     }
     else
     {
+        clearCardsLayout();
+        EmptyCard *emptyCard = new EmptyCard;
+        ui->CardsLayout->addWidget(emptyCard);
         qDebug() << "Couldn't open mps";
     }
 }
@@ -351,26 +358,5 @@ void MainWindow::on_electionStatsButton_clicked()
 
         // Add the Dialog to frameLayout
         frameLayout->addWidget(electSub);
-
-    // Create a QLabel to display the image
-//    QLabel *imageLabel = new QLabel(frameLayout);
-
-//    // Load an image (replace "imagePath.png" with your image file's path)
-//    QPixmap pixmap("../images/statistics.PNG");
-
-//    if (!pixmap.isNull()) {
-//        // Set the image in the QLabel
-//        QPixmap resizedPixmap = pixmap.scaled(1180, 520, Qt::KeepAspectRatio);
-//        imageLabel->setPixmap(pixmap);
-//        imageLabel->setScaledContents(true); // Optionally, scale the image to fit the QLabel
-//        imageLabel->show();
-
-//        // Create a QVBoxLayout for ui->frame_5 and add the QLabel to it
-//        QVBoxLayout* frameLayout = new QVBoxLayout(ui->frame_5);
-//        frameLayout->addWidget(imageLabel);
-//        ui->frame_5->setLayout(frameLayout);
-//    } else {
-//        qDebug() << "Failed to load the image.";
-//    }
 }
 }
