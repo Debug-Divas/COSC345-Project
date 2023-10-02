@@ -83,6 +83,10 @@ void ExpandedCard::on_TranscriptsButton_clicked()
         text += "<br>";
     }
 
+    if(text == ""){
+        text = "<b>Transcripts not found</b>";
+    }
+
     ui->page_contents->setText(text);
     setButtonHighlight(ui->TranscriptsButton);
 }
