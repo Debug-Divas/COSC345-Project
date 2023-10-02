@@ -38,21 +38,21 @@
          </size>
         </property>
         <property name="text">
-         <string>Stats1</string>
+         <string>Percentage of Votes</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="Stats2">
         <property name="text">
-         <string>Stats2</string>
+         <string>Parliament Seats</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="Stats3">
         <property name="text">
-         <string>Stats3</string>
+         <string>Electorate Map</string>
         </property>
        </widget>
       </item>
