@@ -13,7 +13,7 @@
 
 -   [Retrospective](https://github.com/Debug-Divas/COSC345-Project/blob/a8f4f831a3b4ec6060aab7e8cfc9dbcb1ba77f7c/Retrospective%20-%20Debug%20Diva.pdf)
 
-## How To Run
+## How To Run the artefact
 -   In the COSC345-Project Repository, go to Actions
 -   On the left side-bar click on Windows Release then click on the latest passed workflow run
 -   In the Artifacts section click on the zip file to download
@@ -42,8 +42,3 @@ Our continuous integration pipeline generates a makefile for our unit test progr
 
 ## Trello
 [![Task manager](https://img.shields.io/badge/Task_manager-Trello-red.svg)](https://trello.com/b/0s8Y3Pmd/cosc345)
-
-## Discord
-
-![Screenshot of Discord](https://cdn.discordapp.com/attachments/1152954299303862283/1152954328823378142/image.png)
-
