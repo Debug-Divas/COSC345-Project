@@ -24,6 +24,11 @@ Card::Card(MP mp) :
     ui->setupUi(this);
     ui->Name->setText(mp.getName());
     ui->Party->setText(mp.getParty());
+    QString e = mp.getElectorate();
+    if(e==""){
+        e = "List MP";
+    }
+    ui->Electorate->setText(e);
 
     ui->Portrait->setPixmap(QPixmap("../images/portraits/" + mp.getName() + ".jpg"));
 }
