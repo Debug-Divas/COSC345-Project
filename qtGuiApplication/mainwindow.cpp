@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
+    this->setWindowTitle("MP Insight by Debug Divas!");
     expandedCard = nullptr;
     on_peopleButton_clicked();
 }
