@@ -306,11 +306,11 @@ std::vector<Vote> DbManager::getAllVotes()
     QSqlQuery query("SELECT * FROM vote");
     while (query.next())
     {
-        QString ayes_string = query.value(2).toString();
-        QString noes_string = query.value(3).toString();
+        QString ayes_string = query.value(3).toString();
+        QString noes_string = query.value(4).toString();
         QStringList ayes = ayes_string.split("!");
         QStringList noes = noes_string.split("!");
-        Vote vote = Vote(query.value(1).toString(), ayes, noes);
+        Vote vote = Vote(query.value(1).toString(), query.value(2).toString(), ayes, noes);
         allVotes.push_back(vote);
     }
     return allVotes;
@@ -547,7 +547,7 @@ bool DbManager::createVotesTable()
     query.prepare("DROP Table vote");
     query.exec();
 
-    query.prepare("CREATE TABLE vote( ID INTEGER PRIMARY KEY AUTOINCREMENT, vote_name VARCHAR(100), ayes VARCHAR(500), noes VARCHAR(500));");
+    query.prepare("CREATE TABLE vote( ID INTEGER PRIMARY KEY AUTOINCREMENT, date VARCHAR(100), vote_name VARCHAR(100), ayes VARCHAR(500), noes VARCHAR(500));");
 
     if (!query.exec())
     {
@@ -568,7 +568,7 @@ bool DbManager::createVotesTable()
         in.readLine();
     }
 
-    query.prepare("INSERT INTO vote (vote_name, ayes, noes) VALUES (?, ?, ?)");
+    query.prepare("INSERT INTO vote (date, vote_name, ayes, noes) VALUES (?, ?, ?, ?)");
 
     while (!in.atEnd()) {
         QString line = in.readLine();
@@ -577,6 +577,7 @@ bool DbManager::createVotesTable()
         query.addBindValue(fields[0]);
         query.addBindValue(fields[1]);
         query.addBindValue(fields[2]);
+        query.addBindValue(fields[3]);
 
         if (!query.exec()) {
             qDebug() << "Error inserting data into table: " << query.lastError();

@@ -131,6 +131,9 @@ void ExpandedCard::on_VotesButton_clicked()
             }
         }
         if(vote != ""){
+            text += "<b>";
+            text += votes[i].getDate();
+            text += "</b>   -   ";
             text += votes[i].getVoteName();
             text += "   -   <b>";
             text += vote;

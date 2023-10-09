@@ -50,6 +50,12 @@ def getVotesAndHeader(URL):
     else:
         header = None
 
+    date = soup.find_all(class_="publish-date")
+    if len(date) > 0:
+        date = date[0].get_text()
+    else:
+        date = None
+
     tables = soup.find_all(class_="table")
     ayes_table = tables[0]
     noes_table = tables[1]
@@ -71,7 +77,7 @@ def getVotesAndHeader(URL):
             name = name[:-3].rstrip()
         noes.append(name)
 
-    return ayes, noes, header
+    return ayes, noes, header, date
 
 def getFullName(name, full_names):
     name_split = name.split(" ")
@@ -111,7 +117,7 @@ def getFullNameList(names, mps):
                     full_names.append(getFullName(name, mps))
     return full_names
 
-def write_vote_to_csv(header, ayes, noes):
+def write_vote_to_csv(date, header, ayes, noes):
     with open("votes.csv", mode='a', newline='', encoding="utf-8" ) as file:
         csv_writer = csv.writer(file)
         ayes_string = ""
@@ -120,12 +126,12 @@ def write_vote_to_csv(header, ayes, noes):
         noes_string = ""
         for noe in noes:
             noes_string += noe + "!"
-        csv_writer.writerow([header, ayes_string, noes_string])
+        csv_writer.writerow([date, header, ayes_string, noes_string])
 
 def init_csv_files():
     with open("votes.csv", mode='w', newline='', encoding="utf-8" ) as file:
         csv_writer = csv.writer(file)
-        csv_writer.writerow(['Vote', 'Ayes', 'Noes'])
+        csv_writer.writerow(['Date', 'Vote', 'Ayes', 'Noes'])
 
 if __name__ == "__main__":
     mps = getListOfMpNames()
@@ -152,19 +158,19 @@ if __name__ == "__main__":
     # Use readlines() to read the lines of the file into a list
         links = file.readlines()
 
-    init_csv_files()
-    #links = links[36:]
+    #init_csv_files()
+    links = links[28:]
 
     votes = []
     i = 0
     for link in links:
         print(str(i) + ": " + link)
         i += 1
-        ayes_ln, noes_ln, header = getVotesAndHeader(link)
+        ayes_ln, noes_ln, header, date = getVotesAndHeader(link)
         if header != None:
             ayes = getFullNameList(ayes_ln, mps)
             noes = getFullNameList(noes_ln, mps)
-            write_vote_to_csv(header, ayes, noes)
+            write_vote_to_csv(date, header, ayes, noes)
         #votes.append({"header": header, "ayes": ayes, "noes": noes})
     
     #print(votes)
